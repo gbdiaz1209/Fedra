@@ -1,0 +1,4 @@
+servername:
+fedra-server.database.windows.net
+admin-fedra
+Monteria_23*

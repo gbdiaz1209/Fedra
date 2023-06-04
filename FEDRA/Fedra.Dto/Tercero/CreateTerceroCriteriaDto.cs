@@ -1,8 +1,13 @@
-﻿namespace Fedra.Data.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fedra.Dto.Tercero
 {
-    public class Tercero
+    public class CreateTerceroCriteriaDto
     {
-        public long Id { get; set; }
         public long EmpresaId { get; set; }
         public long TipoIdentificacionId { get; set; }
         public string Numero { get; set; } = string.Empty;
@@ -20,16 +25,9 @@
         public long? MunicipioId { get; set; }
         public int? Calificacion { get; set; }
         public string? Observaciones { get; set; }
-        public string CreadoPor { get; set; } = string.Empty;       
+        public string CreadoPor { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; }
         public string ModificadoPor { get; set; } = string.Empty;
         public DateTime FechaModificacion { get; set; }
-
-        //Propiedades de navegacion
-        public Departamento? Departamento { get; set; }
-        public Municipio? Municipio { get; set; }
-        public TipoIdentificacion? TipoIdentificacion { get; set; }
-
-
     }
 }

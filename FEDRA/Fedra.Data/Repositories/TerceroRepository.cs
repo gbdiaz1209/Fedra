@@ -12,5 +12,7 @@ namespace Fedra.Data.Repositories
         {
             _context = context;
         }
+
+        //Incluyeme las propiedades de navegacion
     }
 }

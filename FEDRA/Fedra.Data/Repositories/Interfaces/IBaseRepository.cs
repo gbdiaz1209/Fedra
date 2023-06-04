@@ -21,5 +21,7 @@
         void Delete(TEntity entity);
 
         void Delete(IEnumerable<TEntity> entity);
+
+        public Task<bool> SaveChangesAsync();
     }
 }

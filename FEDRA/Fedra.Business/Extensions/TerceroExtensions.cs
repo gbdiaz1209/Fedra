@@ -1,4 +1,5 @@
-﻿using Fedra.Data.Entities;
+﻿using Fedra.Business.Constants;
+using Fedra.Data.Entities;
 using Fedra.Dto.Departamento;
 using Fedra.Dto.Municipio;
 using Fedra.Dto.Tercero;
@@ -36,9 +37,10 @@ namespace Fedra.Business.Extensions
                 Calificacion = criteria.Calificacion,
                 Observaciones = criteria.Observaciones,
                 CreadoPor = criteria.CreadoPor,
-                FechaCreacion = criteria.FechaCreacion,
+                FechaCreacion = DateTime.Now,
                 ModificadoPor = criteria.ModificadoPor,
-                FechaModificacion = criteria.FechaModificacion
+                FechaModificacion = DateTime.Now,
+                Estado = (int)EstadoActivacion.Activo
             };
 
             return terceroEntity;

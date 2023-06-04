@@ -1,22 +1,34 @@
-﻿using Fedra.Business.DomainServices.Interfaces;
+﻿using Fedra.Business.Constants;
+using Fedra.Business.DomainServices.Interfaces;
 using Fedra.Business.Extensions;
+using Fedra.Business.ValidationServices.Interfaces;
 using Fedra.Data.Repositories.Interfaces;
 using Fedra.Dto.Tercero;
+using Fedra.Dto.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fedra.Business.DomainServices
 {
     public class TerceroDomainService : ITerceroDomainService
     {
         private readonly ITerceroRepository _terceroRepository;
+        private readonly ITerceroValidationService _terceroValidationService;
 
-        public TerceroDomainService(ITerceroRepository terceroRepository)
+        public TerceroDomainService(ITerceroRepository terceroRepository, ITerceroValidationService terceroValidationService)
         {
             _terceroRepository = terceroRepository;
+            _terceroValidationService = terceroValidationService;
         }
 
-        public async Task<TerceroDto> CreateTerceroAsync(CreateTerceroCriteriaDto criteria)
+        public async Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> CreateTerceroAsync(CreateTerceroCriteriaDto criteria)
         {
-            // TODO: crear el servicio de validacion  / validarlo
+            //servicio de validacion  / validarlo
+            var validationResult = await _terceroValidationService.ValidateForCreate(criteria);
+
+            if (validationResult.Mensajes.Any())
+            {
+                return (validationResult, null);
+            }
 
             // Si es valido, usar el repositorio de tercero para crearlo
 
@@ -28,10 +40,24 @@ namespace Fedra.Business.DomainServices
             await _terceroRepository.SaveChangesAsync();
 
             //mapear/convertir la entidad que me devuelve EF al DTO que necesito mandarle al la capa superior
-            var result = terceroEntity.ConvertEntityToDto();
+            var dto = terceroEntity.ConvertEntityToDto();
             
             //retornar el DTO
-            return result;
+            return (validationResult, dto);
+        }
+
+        public async Task<List<TerceroDto>> GetTerceroPorEstadoAsync(long empresaId, int estado)
+        {
+            var tercerosBuscados = await _terceroRepository
+                                                           .GetAll()
+                                                           .Where(t => t.EmpresaId == empresaId &&
+                                                                    t.Estado == estado)
+                                                           .ToListAsync();
+
+            //seleccionar tercero por tercero y convertirlo a dto
+            var tercerosComoDto = tercerosBuscados.Select(tb => tb.ConvertEntityToDto()).ToList();
+
+            return tercerosComoDto;
         }
     }
 }

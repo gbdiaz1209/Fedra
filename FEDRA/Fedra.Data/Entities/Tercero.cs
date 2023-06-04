@@ -24,6 +24,7 @@
         public DateTime FechaCreacion { get; set; }
         public string ModificadoPor { get; set; } = string.Empty;
         public DateTime FechaModificacion { get; set; }
+        public int Estado { get; set; }
 
         //Propiedades de navegacion
         public Departamento? Departamento { get; set; }

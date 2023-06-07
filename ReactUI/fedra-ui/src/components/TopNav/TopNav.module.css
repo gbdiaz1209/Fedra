@@ -1,0 +1,16 @@
+.topNav {
+    margin-left: 65px;
+    border-bottom: 3px solid var(--main-divider);
+    height: 65px;
+    position: fixed;
+    background-color: var(--main-background);
+    width: calc(100% - 65px);
+    z-index: 1;
+    color: var(--bs-purple);
+
+}
+
+.brand {
+    margin: 0;
+    font-weight: 700;
+}

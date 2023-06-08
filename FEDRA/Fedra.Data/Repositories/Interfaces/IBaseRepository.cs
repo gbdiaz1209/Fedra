@@ -10,6 +10,10 @@
 
         Task<TEntity?> Get(long id);
 
+        /// <summary>
+        /// Agregar entidad al contexto para ser grabada
+        /// </summary>
+        /// <param name="entity"></param>
         void Add(TEntity entity);
 
         void Add(IEnumerable<TEntity> entities);

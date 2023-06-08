@@ -45,6 +45,68 @@ namespace Fedra.Business.DomainServices
             return (validationResult, dto);
         }
 
+        public async Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> UpdateTerceroAsync(UpdateTerceroCriteriaDto criteria)
+        {
+            // validar el criteria - que exista
+            var result = await _terceroValidationService.ValidateForUpdate(criteria);
+
+            if (result.Validaciones.Mensajes.Any())
+            {
+                return (result.Validaciones, null);
+            }
+
+            var entity = result.TerceroEntity;
+
+            entity.Nombre = criteria.Nombre;
+            entity.TipoIdentificacionId = criteria.TipoIdentificacionId;
+            entity.Numero = criteria.Numero;
+            entity.Tipo = criteria.Tipo;
+            entity.Nombre = criteria.Nombre;
+            entity.Direccion = criteria.Direccion;
+            entity.Celular = criteria.Celular;
+            entity.Telefono = criteria.Telefono;
+            entity.Email = criteria.Email;
+            entity.DepartamentoId = criteria.DepartamentoId;
+            entity.MunicipioId = criteria.MunicipioId;
+            entity.Calificacion = criteria.Calificacion;
+            entity.Observaciones = criteria.Observaciones;
+            entity.ModificadoPor = criteria.ModificadoPor;
+            entity.FechaModificacion = DateTime.Now;
+
+            _terceroRepository.Update(entity);
+
+            await _terceroRepository.SaveChangesAsync();
+
+            var dto = entity.ConvertEntityToDto();
+
+            return (new ValidationResultDto(), dto);
+        }
+
+        public async Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> UpdateEstadoTerceroAsync(UpdateEstadoCriteriaDto criteria)
+        {
+            // validar el criteria - que exista
+            var result = await _terceroValidationService.ValidateForUpdateEstado(criteria);
+
+            if (result.Validaciones.Mensajes.Any())
+            {
+                return (result.Validaciones, null);
+            }
+
+            var entity = result.TerceroEntity;
+
+            entity.Estado = criteria.Estado;
+            entity.ModificadoPor = criteria.ModificadoPor;
+            entity.FechaModificacion = DateTime.Now;
+
+            _terceroRepository.Update(entity);
+
+            await _terceroRepository.SaveChangesAsync();
+
+            var dto = entity.ConvertEntityToDto();
+
+            return (new ValidationResultDto(), dto);
+        }
+
         public async Task<List<TerceroDto>> GetTerceroPorEstadoAsync(long empresaId, int estado)
         {
             var tercerosBuscados = await _terceroRepository

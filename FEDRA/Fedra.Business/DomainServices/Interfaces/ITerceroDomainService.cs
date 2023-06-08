@@ -5,20 +5,34 @@ namespace Fedra.Business.DomainServices.Interfaces
 {
     public interface ITerceroDomainService
     {
-        //Crear
+        /// <summary>
+        /// Crear Tercero
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
         Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> CreateTerceroAsync(CreateTerceroCriteriaDto criteria);
 
-        //TODO:
-        //Buscar  los 10 pruimeros terceros por nombre y numero de identificacion segun la pabara de busqueda.
+        /// <summary>
+        /// Actualizar informacion general del tercero
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> UpdateTerceroAsync(UpdateTerceroCriteriaDto criteria);
 
-        //Actualizar
-
-        //Buscar Por tipo
-
-        //Inactivar
-
-        //Buscar por estado de activo o inactivo
+        /// <summary>
+        /// Activar o inactivar el tercero usando el update
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        Task<(ValidationResultDto Validaciones, TerceroDto Tercero)> UpdateEstadoTerceroAsync(UpdateEstadoCriteriaDto criteria);
+       
+        /// <summary>
+        /// Buscar Terceros por empresa y estado
+        /// </summary>
+        /// <param name="empresaId"></param>
+        /// <param name="estado"></param>
+        /// <returns></returns>
         Task<List<TerceroDto>> GetTerceroPorEstadoAsync(long empresaId, int estado);
-        //Reactivar        
+              
     }
 }

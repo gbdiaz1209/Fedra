@@ -7,6 +7,8 @@ namespace Fedra.Dto.Tercero
     public class TerceroDto
     {
         public long Id { get; set; }
+
+        public int Estado { get; set; }
         public TipoIdentificacionDto TipoIdentificacion { get; set; }      
         public string Numero { get; set; } = string.Empty;
 

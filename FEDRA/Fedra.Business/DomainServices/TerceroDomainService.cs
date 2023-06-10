@@ -110,7 +110,7 @@ namespace Fedra.Business.DomainServices
         public async Task<List<TerceroDto>> GetTerceroPorEstadoAsync(long empresaId, int estado)
         {
             var tercerosBuscados = await _terceroRepository
-                                                           .GetAll()
+                                                           .GetAll(true,false,true)
                                                            .Where(t => t.EmpresaId == empresaId &&
                                                                     t.Estado == estado)
                                                            .ToListAsync();

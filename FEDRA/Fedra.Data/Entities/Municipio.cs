@@ -3,10 +3,10 @@
     public class Municipio
     {
         public long Id { get; set; }
-        public string Descripcion { get; set; } = string.Empty;
-        public string DepartamentoId { get; set; } = string.Empty;
+        public string Descripcion { get; set; }
+        public string DepartamentoId { get; set; }
 
-        //Propiedades de Navegacion
-        public Departamento Departamento { get; set; } = new Departamento();
+        ////Propiedades de Navegacion
+        //public Departamento Departamento { get; set; }
     }
 }

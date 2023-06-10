@@ -57,6 +57,7 @@ namespace Fedra.Business.Extensions
             var terceroDto = new TerceroDto
             {
                 Id = entity.Id,
+                Estado = entity.Estado,
                 TipoIdentificacion = new TipoIdentificacionDto
                 {
                     Id = entity.TipoIdentificacion != null ? entity.TipoIdentificacion.Id : 0,

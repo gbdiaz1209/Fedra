@@ -28,6 +28,7 @@ namespace Fedra.Api.Common
             builder.Services.AddTransient<IImpuestoRepository, ImpuestoRepository>();
             builder.Services.AddTransient<IMunicipioRepository, MunicipioRepository>();            
             builder.Services.AddTransient<ITipoIdentificacionRepository, TipoIdentificacionRepository>();
+            builder.Services.AddTransient<IDocumentoRepository, DocumentoRepository>();
         }
 
         public void ConfigValidationServicesDependencies(WebApplicationBuilder builder)

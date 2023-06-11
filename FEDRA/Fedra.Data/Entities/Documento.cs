@@ -13,6 +13,11 @@
         public Decimal Ajuste { get; set; }
         public Decimal Descuento { get; set; }
         public Decimal Total { get; set; }
+
+        /// <summary>
+        /// Los estados incluyen 0:Inactivo; 1: Activo; 2: Pagado; 3: Adeudado; 4: Anulado
+        /// 0 y 4 reversan los movimientos de inventarios
+        /// </summary>
         public int Estado { get; set; }
         public long EmpresaId { get; set; }
         public int Condicion { get; set; }

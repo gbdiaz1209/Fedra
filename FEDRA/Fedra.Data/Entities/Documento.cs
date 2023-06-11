@@ -1,6 +1,6 @@
 ﻿namespace Fedra.Data.Entities
 {
-    internal class Documento
+    public class Documento
     {
         public long Id { get; set; }
         public long TipoConfiguracionDocumentoId { get; set; }

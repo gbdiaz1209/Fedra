@@ -1,6 +1,6 @@
-﻿namespace Fedra.Data.Entities
+﻿namespace Fedra.Dto.FormaPago
 {
-    public class FormaPago
+    public class FormaPagoDto
     {
         public long Id { get; set; }
         public string Descripcion { get; set; }

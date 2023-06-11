@@ -1,10 +1,13 @@
-﻿namespace Fedra.Data.Entities
+﻿using Fedra.Dto.ConfiguracionDocumento;
+using Fedra.Dto.FormaPago;
+using Fedra.Dto.Tercero;
+
+namespace Fedra.Dto.Documento
 {
-    public class Documento
+    public class CreateDocumentoCriteriaDto
     {
-        public long Id { get; set; }
-        public long TipoConfiguracionDocumentoId { get; set; }
-        public string? CodigoBarras { get; set; }
+        public long ConfiguracionDocumentoId { get; set; }
+        public string CodigoBarras { get; set; } = string.Empty;
         public long Consecutivo { get; set; }
         public long TerceroId { get; set; }
         public DateTime Fecha { get; set; }
@@ -19,25 +22,12 @@
         /// 0 y 4 reversan los movimientos de inventarios
         /// </summary>
         public int Estado { get; set; }
-        public long EmpresaId { get; set; }
         public int Condicion { get; set; }
         public long FormaPagoId { get; set; }
-        public string? Referencia { get; set; }
+        public string Referencia { get; set; } = string.Empty;
         public decimal DineroRecibido { get; set; }
         public decimal Cambio { get; set; }
-        public string? CreadoPor { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public string ModificadoPor { get; set; } 
-        public DateTime FechaModificacion { get; set; }
-
-        /// <summary>
-        /// Propiedades de navegacion
-        /// </summary>
-
-        public ConfiguracionDocumento? ConfiguracionDocumento { get; set; }
-        public Tercero? Tercero { get; set; }
-        public FormaPago? FormaPago { get; set; }
-
-
+        public string CreadoPor { get; set; } = string.Empty;
+   
     }
 }

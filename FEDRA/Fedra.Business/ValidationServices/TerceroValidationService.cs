@@ -11,7 +11,7 @@ namespace Fedra.Business.ValidationServices
     {
         //inyectar la dependencia del repositorio, porque tenemos que validar que existe.
         
-        private ITerceroRepository _terceroRepository;
+        private readonly ITerceroRepository _terceroRepository;
        
         public TerceroValidationService(ITerceroRepository terceroRepository)
         {

@@ -13,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Dto", "2.Dto", "{E6D98709
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.UserInterface", "1.UserInterface", "{E299C583-F4E5-4AE1-8A67-294D7A20D2B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fedra.Business", "Fedra.Business\Fedra.Business.csproj", "{1864BE93-E896-4E9D-9914-55CA10B87A88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fedra.Business", "Fedra.Business\Fedra.Business.csproj", "{1864BE93-E896-4E9D-9914-55CA10B87A88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fedra.Dto", "Fedra.Dto\Fedra.Dto.csproj", "{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fedra.Dto", "Fedra.Dto\Fedra.Dto.csproj", "{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fedra.Api", "Fedra.Api\Fedra.Api.csproj", "{2C765649-6A40-402F-833C-280778D78B0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C765649-6A40-402F-833C-280778D78B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C765649-6A40-402F-833C-280778D78B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C765649-6A40-402F-833C-280778D78B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C765649-6A40-402F-833C-280778D78B0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{CD23D475-C4BE-488A-A39F-678210CCAC1E} = {DEBC11A2-E6D5-4EF1-8569-9E039F7F2153}
 		{1864BE93-E896-4E9D-9914-55CA10B87A88} = {F153B438-3ABB-47C8-A38F-58D8D8D3F334}
 		{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A} = {E6D98709-33FD-49C4-93C1-FAAAB5103F62}
+		{2C765649-6A40-402F-833C-280778D78B0B} = {E299C583-F4E5-4AE1-8A67-294D7A20D2B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ABBA68B6-D4DC-4241-9C6B-5B8206F75412}

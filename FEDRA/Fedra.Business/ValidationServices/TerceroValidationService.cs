@@ -22,7 +22,7 @@ namespace Fedra.Business.ValidationServices
         {
             var result = new ValidationResultDto();
 
-            //Valida que el tercero con el numero de identificacion no exista
+            //Valida que el tercero con el numero de identificacion no exist
             var validarExistencia = await ValidarExistencia(criteria);
 
             if(!string.IsNullOrEmpty(validarExistencia.Mensaje))
@@ -33,11 +33,12 @@ namespace Fedra.Business.ValidationServices
             return result;
         }
 
-        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdate(UpdateTerceroCriteriaDto criteria)
+        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdate
+                                                                                    (UpdateTerceroCriteriaDto criteria)
         {
             var validationResult = new ValidationResultDto();
 
-            //Valida que el tercero con el numero de identificacion no exista
+            //Valida que el tercero con id exista
             var result = await ValidarExistenciaPorId(criteria.Id);
 
             if (!string.IsNullOrEmpty(result.Validacion.Mensaje))
@@ -48,16 +49,17 @@ namespace Fedra.Business.ValidationServices
             return (validationResult, result.TerceroEntity); 
         }
 
-        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdateEstado(UpdateEstadoCriteriaDto criteria)
+        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)>
+            ValidateForUpdateEstado(UpdateEstadoCriteriaDto criteria)
         {
             var validationResult = new ValidationResultDto();
 
-            //Valida que el tercero con el numero de identificacion no exista
+            //Valida que el tercero con el numero de identificacion 
             var result = await ValidarExistenciaPorId(criteria.TerceroId);
 
             if (!string.IsNullOrEmpty(result.Validacion.Mensaje))
             {
-                validationResult.Mensajes.Add(result.Validacion);
+                validationResult.Mensajes.Add(result.Validacion); 
             }
 
             return (validationResult, result.TerceroEntity);
@@ -80,7 +82,8 @@ namespace Fedra.Business.ValidationServices
             return result;
         }
 
-        private async Task<(ValidationConditionDto Validacion , Tercero TerceroEntity)> ValidarExistenciaPorId(long TerceroId)
+        private async Task<(ValidationConditionDto Validacion , Tercero TerceroEntity)> ValidarExistenciaPorId
+                                                                                                (long TerceroId)
         {
             var result = new ValidationConditionDto();
 

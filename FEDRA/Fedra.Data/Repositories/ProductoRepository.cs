@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Fedra.Data.Repositories
 {
-    public class ProductoRepository : BaseRepository<ProductoRepository>, IProductoRepository
+    public class ProductoRepository : BaseRepository<Producto>, IProductoRepository
     {
         protected FedraDbContext _context;
         public ProductoRepository(FedraDbContext context) : base(context)
@@ -13,23 +13,21 @@ namespace Fedra.Data.Repositories
             _context = context;
         }
 
-        public object UnidadMedidadId { get; private set; }
-        public object CategoriaId { get; private set; }
 
         //Propiedades de navegacion
-        public IQueryable<Producto> GetAll(bool includeUnidadMedidaId, bool includeCategoriaId)
+        public IQueryable<Producto> GetAll(bool includeUnidadMedida, bool includeCategoria)
         {
             var query = GetAll();
 
-            if (includeUnidadMedidaId)
+            if (includeUnidadMedida)
             {
-                query = query.Include(terceroEntity => terceroEntity.UnidadMedidadId);
+                query = query.Include(productoEntity => productoEntity.UnidadMedida);
             }
-            if (includeCategoriaId)
+            if (includeCategoria)
             {
-                query = query.Include(terceroEntity => terceroEntity.CategoriaId);
+                query = query.Include(productoEntity => productoEntity.Categoria);
             }
-            return (IQueryable<Producto>)query;
+            return query;
         }
     }
 }

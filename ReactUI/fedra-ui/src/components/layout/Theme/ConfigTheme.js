@@ -1,7 +1,8 @@
 /** @enum {string} */
 export const THEME = {
-    LIGHT: 'blue',
+    LIGHT: 'light',
     DARK: 'dark',
+    BLUE: 'blue',
   }
   
   const IS_SERVER = typeof window === 'undefined'

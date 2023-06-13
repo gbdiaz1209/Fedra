@@ -1,29 +1,16 @@
-import './App.css';
-import NavigationBar from './components/NavigationBar';
-import { THEME, initTheme, toggleTheme, setTheme, resetTheme } from './Theme'
+import { initTheme } from './components/layout/Theme/ConfigTheme';
+import { AppScreen } from './components/app/AppScreen';
 
 initTheme()
 
 function App() {
   return (
-    <div className="App" >
-                            <button onClick={() => toggleTheme()}>
-                            Toggle Theme
-                          </button>
-                          <button onClick={() => setTheme(THEME.LIGHT)}>
-                            Light Theme
-                          </button>
-                          <button onClick={() => setTheme(THEME.DARK)}>
-                            Dark Theme
-                          </button>
-                          <button onClick={() => resetTheme()}>
-                            Auto Theme
-                          </button>
+    <div className="App" >                            
       {/* TopNavigation */}
       {/* <TopNav /> */}
       {/* SideNAvigation */}
       {/* Dashboard */}
-      <NavigationBar />
+      <AppScreen />
     </div>
   );
 }

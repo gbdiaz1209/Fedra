@@ -1,24 +1,24 @@
 import React from 'react'
-import { THEME, toggleTheme, setTheme, resetTheme } from './ConfigTheme'
+import { useState } from 'react'; 
+import { BiMoon, BiSun } from 'react-icons/bi';
+import { BsSun } from 'react-icons/bs';
+import { toggleTheme, getCurrenttheme } from './ConfigTheme'
 
 export const Theme = () => {
+
+  const [currentTheme, setCurrentTheme] = useState("");
+
+  const handleChange = () => {    
+    toggleTheme();
+    let currentTheme = getCurrenttheme();
+    setCurrentTheme(currentTheme);    
+  };
+
   return (
     <>
-      <button onClick={() => toggleTheme()}>
-        Toggle Theme
-      </button>
-      <button onClick={() => setTheme(THEME.LIGHT)}>
-        Light Theme
-      </button>
-      <button onClick={() => setTheme(THEME.DARK)}>
-        Dark Theme
-      </button>
-      <button onClick={() => setTheme(THEME.BLUE)}>
-        Blue Theme
-      </button>
-      <button onClick={() => resetTheme()}>
-        Auto Theme
-      </button>
+      <div onClick={handleChange}>    
+        {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
+      </div>
     </>
   )
 }

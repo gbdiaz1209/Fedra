@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Poppins;
+  src: url(./fonts/Poppins/Poppins-Light.ttf);
+}
+
+body{
+  font-family: Poppins;
+}
+
 [data-bs-theme=blue] {
   --bs-body-color: var(--bs-white);
   --bs-body-color-rgb: #{to-rgb($white)};

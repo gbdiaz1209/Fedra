@@ -6,7 +6,7 @@ import NavigationBar from './../layout/NavigationBar/'
 export const AppScreen = () => {
   return (
     <>
-    <Theme />
+    {/* <Theme /> */}
     <NavigationBar/>
     </>
     

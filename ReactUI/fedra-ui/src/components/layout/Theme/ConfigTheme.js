@@ -47,3 +47,11 @@ export const THEME = {
     if (IS_SERVER) return
     setTheme(getPreferredTheme())
   }
+
+  export function getCurrenttheme() {
+    if (IS_SERVER) return
+
+    const storedTheme = localStorage.getItem('theme')
+    if (storedTheme) return storedTheme
+    
+  }

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './NavigationBar.module.css'
+import './NavigationBar.css'
 //using normales
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -8,63 +8,64 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { BsPeople, BsBox, BsHouse } from 'react-icons/bs';
+import { TbFileInvoice } from 'react-icons/tb';
+import { SlNotebook } from 'react-icons/sl';
+import { CgMenuGridO } from 'react-icons/cg';
+
+
+import { Badge  } from 'react-bootstrap';
+import Theme from '../Theme';
+
 
 export const NavigationBar = () => {
 
   return (
     <>  
-      <Navbar expand="lg">
+      <Navbar expand="lg" fixed="top">
         <Container fluid>
-          <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+          <Navbar.Brand href="#" className=" d-inline-flex" >
+            <Badge bg="primary" 
+                   className="rounded-circle d-inline-flex justify-content-center align-items-center fs-4" 
+                   style={{ width: '30px', height: '30px' }}>
+                    F
+            </Badge>
+            edra</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Collapse id="navbarScroll" className='center'>
             <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: '100px' }}
+             className="justify-content-center flex-grow-1 pe-5 small gap-2"
+              style={{ maxHeight: '400px' }}
               navbarScroll
-            >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#" disabled>
-                Link
+            >  
+
+              <Nav.Link href="#action1" className="d-inline-flex align-items-center">
+                  <BsHouse size={20}/>&nbsp;&nbsp;Dashboard
               </Nav.Link>
+              <Nav.Link href="#action1" className="d-inline-flex align-items-center">
+                  <BsPeople size={20} />&nbsp;&nbsp;Terceros
+              </Nav.Link>             
+              <Nav.Link href="#action1" className="d-inline-flex align-items-center">
+                  <BsBox size={20} />&nbsp;&nbsp;Productos
+              </Nav.Link>
+              <Nav.Link href="#action1" className="d-inline-flex align-items-center">
+                  <TbFileInvoice size={20} />&nbsp;&nbsp;Venta Rápida
+              </Nav.Link>              
+              <NavDropdown title={<><CgMenuGridO size={18} />&nbsp; Documentos</>} id="navbarScrollingDropdown">
+                <NavDropdown.Item href="#action3">Factura de Venta</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">Compra</NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title={<><SlNotebook size={18} />&nbsp; Cuentas</>} id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Cuentas por cobrar</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">Cuentas por pagar</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="secondary " >Search</Button>
-            </Form>
+            <div className="d-flex">             
+            <Theme/>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <Dropdown>
-      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-        Dropdown Button
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
     </>
   )
 }

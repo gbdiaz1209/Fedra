@@ -34,6 +34,6 @@ namespace Fedra.Business.DomainServices.Interfaces
         /// <param name="nombre"></param>
         /// <returns></returns>
         Task<List<ProductoDto>> GetProductoPorEstadoAsync(long Id, string nombre);
-
+       
     }
 }

@@ -29,16 +29,19 @@ namespace Fedra.Api.Common
             builder.Services.AddTransient<IMunicipioRepository, MunicipioRepository>();            
             builder.Services.AddTransient<ITipoIdentificacionRepository, TipoIdentificacionRepository>();
             builder.Services.AddTransient<IProductoRepository, ProductoRepository>();
+          
         }
 
         public void ConfigValidationServicesDependencies(WebApplicationBuilder builder)
         {
-            builder.Services.AddTransient<ITerceroValidationService, TerceroValidationService>();           
+            builder.Services.AddTransient<ITerceroValidationService, TerceroValidationService>();
+            builder.Services.AddTransient<IProductoValidationService, ProductoValidationService>();
         }
 
         public void ConfigDomainServicesDependencies(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ITerceroDomainService, TerceroDomainService>();
+            builder.Services.AddTransient<IProductoDomainService, ProductoDomainService>();
         }
     }
 }

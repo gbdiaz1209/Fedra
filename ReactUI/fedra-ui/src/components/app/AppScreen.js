@@ -1,13 +1,13 @@
 import React from 'react'
-
-import Theme from '../layout/Theme'
 import NavigationBar from './../layout/NavigationBar/'
+
+import Carousel from 'react-bootstrap/Carousel';
 
 export const AppScreen = () => {
   return (
     <>
-    {/* <Theme /> */}
-    <NavigationBar/>
+      <NavigationBar/>
+      
     </>
     
   )

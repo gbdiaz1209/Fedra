@@ -18,7 +18,6 @@ namespace Fedra.Business.Extensions
                     return new Producto();
                 }
 
-                //los nombres de las variables siempre empiezan en minuscula
                 var productoEntity = new Producto
                 
                 {
@@ -55,7 +54,6 @@ namespace Fedra.Business.Extensions
                     return new ProductoDto();
                 }
 
-                //los nombres de las variables siempre empiezan en minuscula
                 var productoDto = new ProductoDto
                 {
 
@@ -90,7 +88,9 @@ namespace Fedra.Business.Extensions
                     Estado = (int)EstadoActivacion.Activo,
                     ModificadoPor = entity.ModificadoPor,
                     CreadoPor = entity.CreadoPor,
-                    
+                    FechaCreacion = DateTime.Now,//Preguntar si para actualizar es necesario este campo//
+                    FechaModificacion = DateTime.Now,
+
 
                 };
 

@@ -1,10 +1,6 @@
-﻿
+﻿using Fedra.Dto.Producto;
+using Fedra.Dto.Tercero;
 using Fedra.Dto.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fedra.Business.DomainServices.Interfaces
 {
@@ -30,15 +26,14 @@ namespace Fedra.Business.DomainServices.Interfaces
         /// </summary>
         /// <param name="criteria"></param>
         /// <returns></returns>
-        Task<(ValidationResultDto Validaciones, ProductoDto Producto)> UpdateEstadoProductoAsync(UpdateEstadoCriteriaDto criteria);
-
+        Task<(ValidationResultDto Validaciones, ProductoDto Producto)> UpdateEstadoProductoAsync(UpdateEstadoProductoCriteriaDto criteria);
         /// <summary>
         /// Buscar Productos por empresa y estado
         /// </summary>
-        /// <param name="empresaId"></param>
-        /// <param name="estado"></param>
+        /// <param name="Id"></param>
+        /// <param name="nombre"></param>
         /// <returns></returns>
-        Task<List<ProductoDto>> GetProductoPorEstadoAsync(long empresaId, int estado);
+        Task<List<ProductoDto>> GetProductoPorEstadoAsync(long Id, string nombre);
 
     }
 }

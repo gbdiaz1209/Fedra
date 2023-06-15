@@ -23,9 +23,9 @@ namespace Fedra.Business.ValidationServices
         {
             var result = new ValidationResultDto();
 
-            //Valida que el producto a crear no exista, teniendo en cuenta el nombre
+            //Valida que el producto a crear no exista, teniendo en cuenta el ID
 
-            var validarExistencia = await ValidarExistenciaPorNombre(criteria.Nombre);
+            var validarExistencia = await ValidarExistenciaPorId(criteria.Id);
 
             if (!string.IsNullOrEmpty(validarExistencia.Mensaje))
             {
@@ -77,7 +77,7 @@ namespace Fedra.Business.ValidationServices
             if (productoEntity == null)
             {
 
-                validacion.Mensaje = "El Producto no existe";
+                validacion.Mensaje = "El Producto No Existe";
 
                 return (validacion, null);
             }
@@ -85,17 +85,17 @@ namespace Fedra.Business.ValidationServices
             return (validacion, productoEntity);
         }
 
-        private async Task<ValidationConditionDto> ValidarExistenciaPorNombre(string productoNombre)
+        private async Task<ValidationConditionDto> ValidarExistenciaPorId(long productoId)
 
         {
             var result = new ValidationConditionDto();
 
-            var productoEntity = await _productoRepository.GetAll().FirstOrDefaultAsync(t => t.Nombre == productoNombre);
+            var productoEntity = await _productoRepository.GetAll().FirstOrDefaultAsync(p => p.Id == productoId);
 
             if (productoEntity != null)
             {
 
-                result.Mensaje = "El Producto yaa existe";
+                result.Mensaje = "El Producto Existe";
 
                 return result;
             }

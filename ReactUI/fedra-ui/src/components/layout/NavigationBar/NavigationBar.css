@@ -1,21 +1,40 @@
-.underline-padding {
+  .menu-hover {
     text-decoration: none !important;
   }
   
-  .underline-padding:hover {
-    text-decoration: underline;
-    border-bottom: 3px solid var(--bs-primary);
+  .menu-hover:hover {
+    /* text-decoration: underline;
+    border-bottom: 3px solid var(--bs-primary); */
     color: var(--bs-primary) !important;    
   }
 
   .navbar .nav-link.active {
     text-decoration: none !important;
-    text-decoration: underline;
-    border-bottom: 3px solid var(--bs-primary);
+    /* text-decoration: underline; 
+    border-bottom: 3px solid var(--bs-primary); */
     color: var(--bs-primary);
     
   }
-
-  .dropdown-toggle:hover{
-    color: var(--bs-primary);
+  .dropdown-toggle::after {
+    display: none;
   }
+
+   
+  .bg-light {
+    --bs-bg-opacity: 1;
+    /* background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important; */
+    background-color: white !important;    
+}
+
+
+.navbar {
+  --bs-navbar-padding-x: 0; 
+  --bs-navbar-padding-y: 0.3rem;  
+  --bs-navbar-brand-padding-y: 0;    
+  --bs-navbar-nav-link-padding-x: 0.5rem;
+    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+}
+
+.dropdown-menu {
+  --bs-dropdown-spacer: 0;
+}

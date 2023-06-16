@@ -1,27 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './NavigationBar.css'
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { BsPeople, BsBox, BsHouse } from 'react-icons/bs';
 import { TbFileInvoice } from 'react-icons/tb';
 import { SlNotebook } from 'react-icons/sl';
 import { CgMenuGridO } from 'react-icons/cg';
 import { FaAngleDown } from 'react-icons/fa';
-
-import Theme from '../Theme';
+import { BiMoon, BiSun } from 'react-icons/bi';
+import { BsSun } from 'react-icons/bs';
 import FedraIcon from './../FedraIcon';
-import NavDropdownItems from '../NavDropdownItems';
-
+import MegaMenu from '../MegaMenu';
+import { toggleTheme, getCurrenttheme } from './../Theme/ConfigTheme';
 
 export const NavigationBar = () => {
+  
+  const [currentTheme, setCurrentTheme] = useState("");
+
+  useEffect(() => {
+    if(currentTheme === ""){
+      let currentTheme = getCurrenttheme();
+      setCurrentTheme(currentTheme);  
+    }
+  }, [currentTheme])
+
+  const handleChange = () => {    
+    toggleTheme();
+    let currentTheme = getCurrenttheme();
+    setCurrentTheme(currentTheme);    
+  };
 
   return (
     <>  
-      <Navbar expand="lg" fixed="top">
+      <Navbar expand="lg" fixed="top" className='border-bottom'  bg={currentTheme}>
         <Container fluid>
           <Navbar.Brand href="#" className="d-inline-flex justify-content-center align-items-center" >   
             <FedraIcon /> 
@@ -33,18 +47,25 @@ export const NavigationBar = () => {
               style={{ maxHeight: '400px' }}
               navbarScroll
             >  
-              <Nav.Link href="#action1" className="d-inline-flex align-items-center underline-padding">
+              <Nav.Link href="#action1" className="d-inline-flex align-items-center menu-hover">
                   <BsHouse size={20}/>&nbsp;&nbsp;Dashboard
               </Nav.Link>
-              <Nav.Link href="#action2" className="d-inline-flex align-items-center underline-padding">
+              <Nav.Link href="#action4" className="d-inline-flex align-items-center menu-hover">
+                  <TbFileInvoice size={20} />&nbsp;&nbsp;Venta Rápida
+              </Nav.Link> 
+              <MegaMenu 
+                id={"documentos-dropdown"} 
+                menuName={"Documentos"}                                 
+                icon={<CgMenuGridO  size={20}/>}
+               
+              />
+              <Nav.Link href="#action2" className="d-inline-flex align-items-center menu-hover">
                   <BsPeople size={20} />&nbsp;&nbsp;Terceros
               </Nav.Link>             
-              <Nav.Link href="#action3" className="d-inline-flex align-items-center underline-padding">
+              <Nav.Link href="#action3" className="d-inline-flex align-items-center menu-hover">
                   <BsBox size={20} />&nbsp;&nbsp;Productos
               </Nav.Link>
-              <Nav.Link href="#action4" className="d-inline-flex align-items-center underline-padding">
-                  <TbFileInvoice size={20} />&nbsp;&nbsp;Venta Rápida
-              </Nav.Link>              
+                           
               {/* <NavDropdown title={<><CgMenuGridO size={18} />&nbsp; Documentos</>} id="navbarScrollingDropdown" className='underline-padding'>
                 <NavDropdown.Item href="#action5">Factura de Venta</NavDropdown.Item>
                 <NavDropdown.Item href="#action6">Compra</NavDropdown.Item>
@@ -53,11 +74,11 @@ export const NavigationBar = () => {
                 <NavDropdown.Item href="#action7">Cuentas por cobrar</NavDropdown.Item>
                 <NavDropdown.Item href="#action8">Cuentas por pagar</NavDropdown.Item>
               </NavDropdown> */}
-              <NavDropdownItems MenuName={"Documentos"} Icon={<CgMenuGridO  size={18} options={["compora","venta"]} />}/>
-              <NavDropdownItems MenuName={"Cuentas"} Icon={<SlNotebook  size={18} />}/>
             </Nav>
             <div className="d-flex">             
-            <Theme/>
+              <div onClick={handleChange}>    
+                {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
+              </div>
             </div>
           </Navbar.Collapse>
         </Container>

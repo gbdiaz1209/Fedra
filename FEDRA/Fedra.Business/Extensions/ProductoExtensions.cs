@@ -8,9 +8,7 @@ namespace Fedra.Business.Extensions
     // las extenciones deben ser de clases estaticas
     public static class ProductoExtensions
         {
-            //todas las clases estaticas deben tener miembros estaticos 
-            // los metodos extensivos o extensions method los parametros empiezan siempre con la palabra this.
-            //los nombres de los parametros siempre empiezxan en minuscula
+         
             public static Producto ConvertDtoToEntity(this CreateProductoCriteriaDto criteria)
             {
                 if (criteria == null)
@@ -19,10 +17,8 @@ namespace Fedra.Business.Extensions
                 }
 
                 var productoEntity = new Producto
-                
-                {
 
-                    Id = criteria.Id,
+                {
                     Codigo = criteria.Codigo,
                     CodigoBarras = criteria.CodigoBarras,
                     Nombre = criteria.Nombre,
@@ -36,12 +32,10 @@ namespace Fedra.Business.Extensions
                     Ubicacion = criteria.Ubicacion,
                     EmpresaId = criteria.EmpresaId,
                     Estado = (int)EstadoActivacion.Activo,
-                    ModificadoPor = criteria.ModificadoPor,
                     CreadoPor = criteria.CreadoPor,
+                    ModificadoPor = criteria.CreadoPor,
                     FechaCreacion = DateTime.Now,
                     FechaModificacion = DateTime.Now,
-
-
                 };
 
                 return productoEntity;
@@ -76,7 +70,6 @@ namespace Fedra.Business.Extensions
                         Descripcion = entity.Categoria != null ? entity.Categoria.Descripcion : string.Empty,
                         EmpresaId = entity.Categoria != null ? entity.Categoria.EmpresaId : 0,
                    
-
                     },
                     CostoPonderado = entity.CostoPonderado,
                     PrecioVenta = entity.PrecioVenta,

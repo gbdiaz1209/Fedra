@@ -25,7 +25,7 @@ namespace Fedra.Business.ValidationServices
 
             //Valida que el producto a crear no exista, teniendo en cuenta el ID
 
-            var validarExistencia = await ValidarExistenciaPorId(criteria.Id);
+            var validarExistencia = await ValidarExistenciaPorId(criteria.Nombre);
 
             if (!string.IsNullOrEmpty(validarExistencia.Mensaje))
             {
@@ -85,12 +85,12 @@ namespace Fedra.Business.ValidationServices
             return (validacion, productoEntity);
         }
 
-        private async Task<ValidationConditionDto> ValidarExistenciaPorId(long productoId)
+        private async Task<ValidationConditionDto> ValidarExistenciaPorId(string productonombre)
 
         {
             var result = new ValidationConditionDto();
 
-            var productoEntity = await _productoRepository.GetAll().FirstOrDefaultAsync(p => p.Id == productoId);
+            var productoEntity = await _productoRepository.GetAll().FirstOrDefaultAsync(p => p.Nombre == productonombre);
 
             if (productoEntity != null)
             {

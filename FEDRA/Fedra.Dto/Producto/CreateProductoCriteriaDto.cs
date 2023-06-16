@@ -2,7 +2,6 @@
 {
     public class CreateProductoCriteriaDto
     {
-        public long Id { get; set; }
         public string? Codigo { get; set; }
         public string? CodigoBarras { get; set; }
         public string Nombre { get; set; }
@@ -17,9 +16,6 @@
         public long EmpresaId { get; set; }
         public int? Estado { get; set; }
         public string? CreadoPor { get; set; }     
-        public DateTime FechaCreacion { get; set; }
-        public string? ModificadoPor { get; set; }
-        public DateTime FechaModificacion { get; set; }
     }
 }
 

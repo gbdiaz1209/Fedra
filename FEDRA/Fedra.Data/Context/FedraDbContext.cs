@@ -21,7 +21,9 @@ namespace Fedra.Data.Context
         public DbSet<Impuesto> Impuestos { get; set; }
         public DbSet<Municipio> Municipios { get; set; }
         public DbSet<TipoIdentificacion> TiposIdentificacion { get; set; }
-          
+        public DbSet<Producto> Productos { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

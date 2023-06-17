@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fedra.Business", "Fedra.Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fedra.Dto", "Fedra.Dto\Fedra.Dto.csproj", "{60CBA6FE-E7B3-4DA9-BA53-8E5A37A7513A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fedra.Api", "Fedra.Api\Fedra.Api.csproj", "{2C765649-6A40-402F-833C-280778D78B0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fedra.Api", "Fedra.Api\Fedra.Api.csproj", "{2C765649-6A40-402F-833C-280778D78B0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

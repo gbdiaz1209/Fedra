@@ -24,9 +24,9 @@ namespace Fedra.Api.Controllers
         /// <param name="criteria"></param>
         /// <returns></returns>
         [HttpPost]
-                                                                  //que necesitamos para crear un producto? El Criterio. 
-                                                                  //Es decir, El DomainServices recibe el Criterio
-                                                                  
+        //que necesitamos para crear un producto? El Criterio. 
+        //Es decir, El DomainServices recibe el Criterio
+
         public async Task<ActionResult> CreateProductoAsync([FromBody] CreateProductoCriteriaDto criteria)
         {
 
@@ -35,14 +35,14 @@ namespace Fedra.Api.Controllers
             {
                 return new BadRequestResult(); //primera validación
             }
-                                                                                     //despues de inyectar la depencia la usamos.
+            //despues de inyectar la depencia la usamos.
             var result = await _productoDomainService.CreateProductoAsync(criteria); //para utilizar el DomainService en
                                                                                      // el controlador que debemos hacer?
                                                                                      // R. inyectarlo en el arriba en el constructor)
 
             if (result.Validaciones.Mensajes.Any())  //si hay algun mensaje en las validaciones o en los mensajes?
-                                                      //si la respuesta es Si.. algo esta malo, devuelve Badrequest con todo esos mensajes
-                                                      
+                                                     //si la respuesta es Si.. algo esta malo, devuelve Badrequest con todo esos mensajes
+
             {
                 return BadRequest(result.Validaciones.Mensajes); //que nos devuelve este metodo? R. unas validaciones
                                                                  //o un Producto Creado.
@@ -57,11 +57,11 @@ namespace Fedra.Api.Controllers
         /// <param name="Id"></param>
         /// <param name="nombre"></param>
         /// <returns></returns>
-        
+
         [HttpGet("GetByEstado")]
-        public async Task<ActionResult> GetByEstadoAsync(long Id, string nombre)
+        public async Task<ActionResult> GetByEstadoAsync(int estado, long empresaId)
         {
-            var productos = await _productoDomainService.GetProductoPorEstadoAsync(Id, nombre); //petición Asincrona
+            var productos = await _productoDomainService.GetProductoPorEstadoAsync(estado, empresaId); //petición Asincrona
 
             var result = new //creamos un objeto de resultado
             {
@@ -71,6 +71,23 @@ namespace Fedra.Api.Controllers
             return new ObjectResult(result); //devuelvo el objeto en este caso los productos buscados por Id y nombre
         }
 
+        /// <summary>
+        /// Se utiliza put cuando es actualizar
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        [HttpGet("GetByID")]
+        public async Task<ActionResult> GetProductoByIdAsync(long id)
+        {
+            var productos = await _productoDomainService.GetProductoByIdAsync(id); //petición Asincrona
+
+            var result = new //creamos un objeto de resultado
+            {
+                Productos = productos //estos son los productos que fueron buscados con el metodo away y get
+            };
+
+            return new ObjectResult(result);
+        }
         /// <summary>
         /// Se utiliza put cuando es actualizar
         /// </summary>
@@ -95,17 +112,12 @@ namespace Fedra.Api.Controllers
             return new OkObjectResult(result.Producto);
         }
 
-        /// <summary>
-        /// Se utiliza put cuando es actualizar
-        /// </summary>
-        /// <param name="criteria"></param>
-        /// <returns></returns>
+       
         [HttpPut("UpdateEstado")]
+       
         public async Task<ActionResult> UpdateEstadoAsync([FromBody] UpdateEstadoProductoCriteriaDto criteria)
         {
-
-
-            if (criteria == null)
+                if (criteria == null)
             {
                 return new BadRequestResult();
             }
@@ -118,9 +130,6 @@ namespace Fedra.Api.Controllers
             }
 
             return new OkObjectResult(result.Producto);
-        }
-
-
-
+        }        
     }
 }

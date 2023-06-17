@@ -54,12 +54,11 @@ namespace Fedra.Business.Extensions
                     Id = entity.Id, 
                     Codigo = entity.Codigo,
                     CodigoBarras = entity.CodigoBarras,
-                    Nombre = entity.Nombre,
-                    
+                    Nombre = entity.Nombre,                    
                     UnidadMedida = new UnidadMedidaDto
                     {
                         Id = entity.UnidadMedida != null ? entity.UnidadMedida.Id : 0,
-                        Nombre = entity.UnidadMedida != null ? entity.UnidadMedida.Simbolo: string.Empty,
+                        Nombre = entity.UnidadMedida != null ? entity.UnidadMedida.Nombre: string.Empty,
                         Simbolo = entity.UnidadMedida != null ? entity.UnidadMedida.Simbolo : string.Empty,
                     },
 
@@ -82,9 +81,7 @@ namespace Fedra.Business.Extensions
                     ModificadoPor = entity.ModificadoPor,
                     CreadoPor = entity.CreadoPor,
                     FechaCreacion = DateTime.Now,//Preguntar si para actualizar es necesario este campo//
-                    FechaModificacion = DateTime.Now,
-
-
+                    FechaModificacion = DateTime.Now
                 };
 
                 return productoDto;

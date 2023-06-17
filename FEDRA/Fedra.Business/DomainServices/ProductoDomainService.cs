@@ -2,13 +2,14 @@
 using Fedra.Business.DomainServices.Interfaces;
 using Fedra.Business.Extensions;
 using Fedra.Business.ValidationServices.Interfaces;
+using Fedra.Data.Repositories;
 using Fedra.Data.Repositories.Interfaces;
 using Fedra.Dto.Producto;
 using Fedra.Dto.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fedra.Business.DomainServices
-{   
+{
     public class ProductoDomainService : IProductoDomainService
     {
         private readonly IProductoRepository _productoRepository;
@@ -47,7 +48,6 @@ namespace Fedra.Business.DomainServices
         }
 
         public async Task<(ValidationResultDto Validaciones, ProductoDto Producto)> UpdateProductoAsync(UpdateProductoCriteriaDto criteria)
-
         {
             // validar el criteria - que exista
             var result = await _productoValidationService.ValidateForUpdate(criteria);
@@ -119,26 +119,33 @@ namespace Fedra.Business.DomainServices
             return (new ValidationResultDto(), dto); //devuelve la validacion y el dto de criteria actualizado
         }
 
-
-        public async Task<List<ProductoDto>> GetProductoPorEstadoAsync(long Id, string nombre)
+        public async Task<List<ProductoDto>> GetProductoPorEstadoAsync(long estado, long empresaId)
         {
             var productosBuscados = await _productoRepository
-                                                           .GetAll(true, false)
-                                                           .Where(t => t.EmpresaId == Id &&
-                                                                    t.Nombre == nombre)
+                                                           .GetAll(false, false)
+                                                           .Where(p => p.Estado == estado &&
+                                                                    p.EmpresaId == empresaId)
                                                            .ToListAsync();
 
             //seleccionar producto por producto y convertirlo a dto
             var productosComoDto = productosBuscados.Select(tb => tb.ConvertEntityToDto()).ToList();
 
             return productosComoDto;
-
-
-
-
         }
 
-    } 
-    
+        public async Task<List<ProductoDto>> GetProductoByIdAsync(long id)
+        {
+            var productosBuscados = await _productoRepository
+                                                           .GetAll(false, false)
+                                                           .Where(p => p.Id == id)
+                                                           .ToListAsync();
 
+            //seleccionar producto por producto y convertirlo a dto
+            var productosComoDto = productosBuscados.Select(tb => tb.ConvertEntityToDto()).ToList();
+
+            return productosComoDto;
+        }       
+    }
 }
+
+

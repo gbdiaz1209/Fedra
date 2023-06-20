@@ -18,6 +18,10 @@
 
         void Add(IEnumerable<TEntity> entities);
 
+        /// <summary>
+        /// Agregar entidad al contexto para ser sobreescrita
+        /// </summary>
+        /// <param name="entity"></param>
         void Update(TEntity entity);
 
         void UpdateRange(IEnumerable<TEntity> entities);

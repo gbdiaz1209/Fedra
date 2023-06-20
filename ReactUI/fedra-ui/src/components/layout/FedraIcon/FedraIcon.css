@@ -1,5 +1,10 @@
-.circle-icon-size {
-    width: 30px;
-    height: 30px;
-    
+.divider{
+  border-left: 2px dashed ; /* Border on the left */
+  width: 10px; 
+  height: 25px;
+}
+
+
+.icon-rotate{
+    transform: rotate(95deg);
 }

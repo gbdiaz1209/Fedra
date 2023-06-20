@@ -19,6 +19,18 @@ import { toggleTheme, getCurrenttheme } from './../Theme/ConfigTheme';
 export const NavigationBar = () => {
   
   const [currentTheme, setCurrentTheme] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 100) {      
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+  
+  window.addEventListener('scroll', handleScroll);
 
   useEffect(() => {
     if(currentTheme === ""){
@@ -35,7 +47,7 @@ export const NavigationBar = () => {
 
   return (
     <>  
-      <Navbar expand="lg" fixed="top" className='border-bottom'  bg={currentTheme}>
+      <Navbar expand="lg" fixed="top" className={scrolled ? 'navbar-abajo' : ''}  bg={currentTheme}>
         <Container fluid>
           <Navbar.Brand href="#" className="d-inline-flex justify-content-center align-items-center" >   
             <FedraIcon /> 
@@ -83,6 +95,7 @@ export const NavigationBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <div style={{ paddingTop: '50px' }}></div>
     </>
   )
 }

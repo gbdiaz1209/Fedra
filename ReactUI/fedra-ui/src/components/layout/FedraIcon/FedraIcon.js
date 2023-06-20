@@ -1,15 +1,12 @@
-import { DiUikit } from 'react-icons/di';
-import { IconContext } from 'react-icons';
+import { LuMousePointer2 } from 'react-icons/lu';
 import './FedraIcon.css';
-
 
 export function FedraIcon() {
   return (
-    <IconContext.Provider 
-        value={{ className: 'flex justify-content-center   circle-icon-size' }}>        
-      <div>
-        <DiUikit />fedra
-      </div>
-    </IconContext.Provider>
+    <>
+      <LuMousePointer2 className='icon-rotate' size={30}/> 
+        {/* &nbsp; <span className="divider"></span> */}
+        Fedra
+    </>  
   );
 }

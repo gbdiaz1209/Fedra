@@ -1,14 +1,7 @@
-/* .navbar .nav-link.active {
-  text-decoration: none !important;
-  text-decoration: underline;
-  border-bottom: 3px solid var(--bs-primary);
-  color: var(--bs-primary);  
-} */
-
 @media only screen and (min-width: 600px) {
-  .documentosNav {
+  .dropdown-mega-menu {
     width: 25em;
-    padding-bottom: 1em;
-  }
+    padding-bottom: 1em;   
+  } 
 }
 

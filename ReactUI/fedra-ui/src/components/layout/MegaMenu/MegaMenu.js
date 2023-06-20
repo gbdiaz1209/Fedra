@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown } from 'react-icons/fa';
 
 import './MegaMenu.css';
 
@@ -33,13 +33,13 @@ export function MegaMenu( props ) {
   return (
     <NavDropdown 
       title={<CustomToggle />} 
-      id={id}        
-      show={show}
+      id={id}   
+      show={show}           
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}         
-      className='d-inline-flex align-items-center'
+      className='d-inline-flex align-items-center '
       renderMenuOnMount={true}>
-          <Container className="documentosNav">
+          <Container className="dropdown-mega-menu fade-in">
             <Row>
               <Col xs="12" md="6" className="text-left">
                 <Dropdown.Header>
@@ -61,7 +61,7 @@ export function MegaMenu( props ) {
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <Nav.Link href="/">
-                    <a className="nav-link" role="button">
+                    <a className="nav-link" role="button" >
                       Private
                     </a>
                   </Nav.Link>

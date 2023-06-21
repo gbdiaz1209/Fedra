@@ -2,10 +2,6 @@ import React, { useState } from 'react'
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import { NavDropdown } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
 
 import { FaAngleDown } from 'react-icons/fa';
 import { 
@@ -40,12 +36,13 @@ export function MegaMenu( props ) {
     <NavDropdown 
       title={<CustomToggle />} 
       id={id}   
-      show={true}           
+      show={show}           
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}         
       className='d-inline-flex align-items-center border-top'
       renderMenuOnMount={true}>
-        <div className="dropdown-mega-menu d-flex flex-row  fade-in">
+        <div className='container py-3'>
+            <div className="dropdown-mega-menu d-flex flex-row  fade-in">
           <div className="col-7">
               <div className="menu-principal">
                 <Dropdown.Item className='rounded py-2'>
@@ -143,8 +140,7 @@ export function MegaMenu( props ) {
             </Dropdown.Item> 
           </div>
         </div>
-
-
+        </div>
     </NavDropdown>
   );
 

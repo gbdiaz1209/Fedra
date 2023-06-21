@@ -4,8 +4,8 @@
 }
 
 body{
-  font-family: Poppins;
-}
+  font-family: Poppins;   
+ }
 
 [data-bs-theme=blue] {
   --bs-body-color: var(--bs-white);

@@ -47,7 +47,7 @@ export const NavigationBar = () => {
 
   return (
     <>  
-      <Navbar expand="lg" fixed="top" className={scrolled ? 'navbar-abajo' : ''}  bg={currentTheme}>
+      <Navbar expand="sm" fixed="top" className={scrolled ? 'navbar-abajo' : ''}  bg={currentTheme}>
         <Container fluid>
           <Navbar.Brand href="#" className="d-inline-flex justify-content-center align-items-center" >   
             <FedraIcon /> 
@@ -56,26 +56,26 @@ export const NavigationBar = () => {
           <Navbar.Collapse id="navbarScroll" className='center'>
             <Nav
              className="justify-content-center flex-grow-1 pe-5 small gap-2"
-              style={{ maxHeight: '400px' }}
+              style={{ maxHeight: '200px' }}
               navbarScroll
             >  
               <Nav.Link href="#action1" className="d-inline-flex align-items-center menu-hover">
-                  <BsHouse size={20}/>&nbsp;&nbsp;Dashboard
+                  <BsHouse size={18}/>&nbsp;&nbsp;Dashboard
               </Nav.Link>
               <Nav.Link href="#action4" className="d-inline-flex align-items-center menu-hover">
-                  <TbFileInvoice size={20} />&nbsp;&nbsp;Venta Rápida
+                  <TbFileInvoice size={18} />&nbsp;&nbsp;Venta Rápida
               </Nav.Link> 
               <MegaMenu 
                 id={"documentos-dropdown"} 
                 menuName={"Documentos"}                                 
-                icon={<CgMenuGridO  size={20}/>}
+                icon={<CgMenuGridO  size={18}/>}
                
               />
               <Nav.Link href="#action2" className="d-inline-flex align-items-center menu-hover">
-                  <BsPeople size={20} />&nbsp;&nbsp;Terceros
+                  <BsPeople size={18} />&nbsp;&nbsp;Terceros
               </Nav.Link>             
               <Nav.Link href="#action3" className="d-inline-flex align-items-center menu-hover">
-                  <BsBox size={20} />&nbsp;&nbsp;Productos
+                  <BsBox size={18} />&nbsp;&nbsp;Productos
               </Nav.Link>
                            
               {/* <NavDropdown title={<><CgMenuGridO size={18} />&nbsp; Documentos</>} id="navbarScrollingDropdown" className='underline-padding'>

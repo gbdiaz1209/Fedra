@@ -21,9 +21,16 @@
   .dropdown:hover .dropdown-menu{
     margin-top: 0;
   } 
+  .navbar{
+    padding: 0;
+  }
+  .menu-hover{
+    height: 50px;    
+  }
   .menu-hover:hover{  
     color: var(--bs-primary) !important;    
   }  
+  
 }
 
 .fade-in {
@@ -39,5 +46,7 @@
     opacity: 1;    
   }
 }
+
+
 
 

@@ -8,6 +8,12 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 
 import { FaAngleDown } from 'react-icons/fa';
+import { 
+  FcDocument, FcReadingEbook,
+  FcExport, FcMoneyTransfer,
+  FcRules, FcRight, FcLeft,
+  FcImport, FcBriefcase, FcFolder } from 'react-icons/fc';
+
 
 import './MegaMenu.css';
 
@@ -25,7 +31,7 @@ export function MegaMenu( props ) {
   function CustomToggle() {
     return (
       <div className={show ? "text-primary" : ""}>
-        {icon} {menuName} {" "} <FaAngleDown size={19} />
+        {icon} {menuName} {" "} <FaAngleDown size={17} />
       </div>
     );
   }
@@ -34,127 +40,111 @@ export function MegaMenu( props ) {
     <NavDropdown 
       title={<CustomToggle />} 
       id={id}   
-      show={show}           
+      show={true}           
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}         
-      className='d-inline-flex align-items-center '
+      className='d-inline-flex align-items-center border-top'
       renderMenuOnMount={true}>
-          <Container className="dropdown-mega-menu fade-in">
-            <Row>
-              <Col xs="12" md="6" className="text-left">
-                <Dropdown.Header>
-                  {/* <FontAwesomeIcon
-                    color="black"
-                    icon={"concierge-bell"}
-                    size="1x"
-                    className="pr-1"
-                  /> */}
-                  {"  "}
-                  Catering
-                </Dropdown.Header>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Corporate
-                    </a>
-                  </Nav.Link>
+        <div className="dropdown-mega-menu d-flex flex-row  fade-in">
+          <div className="col-7">
+              <div className="menu-principal">
+                <Dropdown.Item className='rounded py-2'>
+                   <div className=" d-flex  ">
+                    <FcDocument size={30} className="me-3 object-fit-contain border-0 rounded" /> 
+                    <div className=" ">
+                      <label className='submenu-item align-top'>
+                        <label className='titulo-item'>Facturas</label> 
+                        <br />
+                        <small>Gestiona las ventas</small></label>
+                    </div>                    
+                  </div>
                 </Dropdown.Item>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button" >
-                      Private
-                    </a>
-                  </Nav.Link>
+                <Dropdown.Item className='rounded py-2'>
+                   <div className=" d-flex  ">
+                    <FcReadingEbook size={30} className="me-3 object-fit-contain border-0 rounded" /> 
+                    <div className=" ">
+                      <label className='submenu-item align-top'>
+                      <label className='titulo-item'>Compras</label> 
+                        <br />
+                      <small>Compras a proveedores</small></label>
+                    </div>                    
+                  </div>
                 </Dropdown.Item>
+                <Dropdown.Item className='rounded py-2'>
+                   <div className=" d-flex  ">
+                    <FcExport size={30} className="me-3 object-fit-contain border-0 rounded" /> 
+                    <div className=" ">
+                      <label className='submenu-item align-top'>
+                      <label className='titulo-item'>Comprobante de egreso</label> 
+                         <br />
+                      <small>Controla los gastos</small></label>
+                    </div>                    
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Item className='rounded py-2'>
+                   <div className=" d-flex  ">
+                    <FcMoneyTransfer size={30} className="me-3 object-fit-contain border-0 rounded" /> 
+                    <div className=" ">
+                      <label className='submenu-item align-top'>
+                      <label className='titulo-item'>Recibo de caja</label> 
+                        <br />
+                      <small>Historial de recibos</small></label>
+                    </div>                    
+                  </div>
+                </Dropdown.Item>
+                <Dropdown.Item className='rounded py-2'>
+                   <div className=" d-flex  ">
+                    <FcRules size={30} className="me-3 object-fit-contain border-0 rounded" /> 
+                    <div className=" ">
+                      <label className='submenu-item align-top'>
+                      <label className='titulo-item'>Cotización</label> 
+                      <br />
+                      <small>Gestiona las cotizaciones</small></label>
+                    </div>                    
+                  </div>
+                </Dropdown.Item>
+              </div>              
+          </div>
+          
+          <div className="col-5">
+           
+            <div class="d-flex py-3 px-3 titulo-otros">
+              Otros          
+            </div>
+            <Dropdown.Item className='rounded'>
+              <div class="d-flex justify-content-between ">
+                <div className='px-3 submenu-item'>Comprobante de ingreso</div>              
+                <FcImport  size={25}/>
+              </div>
+            </Dropdown.Item>
+            <Dropdown.Item className='rounded'>
+              <div class="d-flex justify-content-between ">
+                <div className='px-3 submenu-item'>Devolución en venta</div>              
+                <FcBriefcase  size={25}/>
+              </div>
+            </Dropdown.Item>          
+            <Dropdown.Item className='rounded'>
+              <div class="d-flex justify-content-between ">
+                <div className='px-3 submenu-item'>Devolución en compra</div>              
+                <FcFolder  size={25}/>
+              </div>
+            </Dropdown.Item>            
+            <Dropdown.Item className='rounded'>
+              <div class="d-flex justify-content-between ">
+                <div className='px-3 submenu-item'>Entrada Inventario</div>              
+                <FcLeft  size={25}/>
+              </div>
+            </Dropdown.Item> 
+            <Dropdown.Item className='rounded'>
+              <div class="d-flex justify-content-between ">
+                <div className='px-3 submenu-item'>Salida Inventario</div>              
+                <FcRight   size={25}/>
+              </div>
+            </Dropdown.Item> 
+          </div>
+        </div>
 
-                <Dropdown.Divider />
-                <Dropdown.Header>
-                  {/* <FontAwesomeIcon
-                    color="black"
-                    icon={"chalkboard-teacher"}
-                    size="1x"
-                    className="pr-1"
-                  /> */}
-                  {"  "}
-                  Classes
-                </Dropdown.Header>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Barista 101
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      History of Coffee
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Intro to Cafe Snobbery
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Divider className="d-md-none" />
-              </Col>
 
-              <Col xs="12" md="6" className="text-left">
-                <Dropdown.Header>
-                  {/* <FontAwesomeIcon
-                    color="black"
-                    icon={"building"}
-                    size="1x"
-                    className="pr-1"
-                  /> */}
-                  {"  "}
-                  Rentals
-                </Dropdown.Header>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Fireside Room
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Roasting Room
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Header>
-                  {/* <FontAwesomeIcon
-                    color="black"
-                    icon={"sun"}
-                    size="1x"
-                    className="pr-1"
-                  /> */}
-                  {"  "}
-                  Seasonal
-                </Dropdown.Header>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link" role="button">
-                      Coldbrew Night
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Nav.Link href="/">
-                    <a className="nav-link text-wrap" role="button">
-                      Campfire Coffee Class
-                    </a>
-                  </Nav.Link>
-                </Dropdown.Item>
-              </Col>
-            </Row>
-          </Container>
     </NavDropdown>
   );
 

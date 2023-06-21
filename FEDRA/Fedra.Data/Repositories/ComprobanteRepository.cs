@@ -13,17 +13,13 @@ namespace Fedra.Data.Repositories
             _context = context;
         }
         //Propiedades de navegacion
-        public IQueryable<Comprobante> GetAll(bool includeIngreso, bool includeEgreso)
+        public IQueryable<Comprobante> GetAll(bool includeCategoriasComprobante)
         {
             var query = GetAll();
 
-            if (includeIngreso)
+            if (includeCategoriasComprobante)
             {
-                query = query.Include(ComprobanteEntity => comprobanteEntity.Ingreso);
-            }
-            if (includeEgreso)
-            {
-                query = query.Include(productoEntity => comprobanteEntity.Egreso);
+                query = query.Include(ComprobanteEntity => ComprobanteEntity.CategoriasComprobante);
             }
             return query;
         }

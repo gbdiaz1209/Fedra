@@ -2,10 +2,8 @@
 
 namespace Fedra.Data.Repositories.Interfaces
 {
-    public interface IComprobanteRepository : BaseRepository<Comprobante>
+    public interface IComprobanteRepository : IBaseRepository<Comprobante>
     {
-        IQueryable<Comprobante> GetAll(bool includeIngreso, bool includeEgreso);
-
-
+        IQueryable<Comprobante> GetAll(bool includeCategoriasComprobante);
     }
 }

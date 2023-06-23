@@ -14,9 +14,7 @@
         public DateTime FechaCreacion { get; set; }
         public string? Modificadopor { get; set; }
         public DateTime? FechaModificacion { get; set; }
-
         //Propiedades de Navegacion
         public CategoriasComprobanteDto? CategoriasComprobante { get; set; }
-
     }
 }

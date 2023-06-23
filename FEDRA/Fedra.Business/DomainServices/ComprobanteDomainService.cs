@@ -18,24 +18,18 @@ namespace Fedra.Business.DomainServices
             _comprobanteRepository = comprobanteRepository;
             _comprobanteValidationService = comprobanteValidationService;
         }
-
         public async Task<ComprobanteDto> CreateComprobanteAsync(CreateComprobanteCriteriaDto criteria)
         {        
-
             //Mapear criteria DTO a la entidad
             var comprobanteEntity = criteria.ConvertDtoToEntity();
-
             // usar el comprobante repositorio para guardar la fila en la tabla.
             _comprobanteRepository.Add(comprobanteEntity);
             await _comprobanteRepository.SaveChangesAsync();
-
             //mapear/convertir la entidad que me devuelve EF al DTO que necesito mandarle al la capa superior
             var dto = comprobanteEntity.ConvertEntityToDto();
-
             //retornar el DTO
             return dto;
         }
-
         public async Task<(ValidationResultDto Validaciones, ComprobanteDto Comprobante)> UpdateComprobanteAsync(UpdateComprobanteCriteriaDto criteria)
         {
             // validar el criteria - que exista
@@ -45,7 +39,6 @@ namespace Fedra.Business.DomainServices
             {
                 return (result.Validaciones, null); 
             }
-         
             var entity = result.ComprobanteEntity;
 
             entity.Consecutivo = criteria.Consecutivo;
@@ -68,7 +61,6 @@ namespace Fedra.Business.DomainServices
 
             return (new ValidationResultDto(), dto);
         }
-
         public async Task<List<ComprobanteDto>> GetComprobanteByIdAsync(long id)
         {
             var comprobantesBuscados = await _comprobanteRepository
@@ -81,8 +73,5 @@ namespace Fedra.Business.DomainServices
 
             return comprobantesComoDto;
         }
-
-      
-        
     }
 }

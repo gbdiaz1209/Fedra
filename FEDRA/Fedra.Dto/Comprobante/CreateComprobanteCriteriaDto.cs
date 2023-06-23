@@ -2,7 +2,7 @@
 {
     public class CreateComprobanteCriteriaDto
     {
-          //para el create nunca se manda el ID porque la base de dato lo genera
+        //para el create nunca se manda el ID porque la base de dato lo genera
         public long? Consecutivo { get; set; }
         public string? Descripcion { get; set; }
         public decimal? Valor { get; set; }
@@ -14,6 +14,5 @@
         public DateTime FechaCreacion { get; set; }
         public string? ModificadoPor { get; set; } 
         public DateTime? FechaModificacion { get; set; }
-
     }
 }

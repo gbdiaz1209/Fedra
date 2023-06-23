@@ -6,10 +6,13 @@ using Fedra.Dto.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fedra.Business.ValidationServices
-
 {
     public class ComprobanteValidationService : IComprobanteValidationService
+  
     {
+
+        //inyectar la dependencia del repositorio, porque tenemos que validar que existe.
+
         private readonly IComprobanteRepository _comprobanteRepository;
 
         public ComprobanteValidationService(IComprobanteRepository comprobanteRepository)
@@ -17,73 +20,77 @@ namespace Fedra.Business.ValidationServices
             _comprobanteRepository = comprobanteRepository;
         }
 
+
         public async Task<ValidationResultDto> ValidateForCreate(CreateComprobanteCriteriaDto criteria)
         {
             var result = new ValidationResultDto();
 
-            //Valida que el comprobante con el numero de id
+            var validateExistence = await ValidateExistenceById(criteria);
 
-            var validarExistencia = await ValidarExistencia(criteria);
-
-            if (!string.IsNullOrEmpty(validarExistencia.Mensaje))
+            if (!string.IsNullOrEmpty(validateExistence.Mensaje))
             {
-                result.Mensajes.Add(validarExistencia);
+                result.Mensajes.Add(validateExistence);
             }
 
             return result;
+
         }
 
         public async Task<(ValidationResultDto Validaciones, Comprobante ComprobanteEntity)> ValidateForUpdate(UpdateComprobanteCriteriaDto criteria)
-
         {
-            var validationResult = new ValidationResultDto();
+            var validacion = new ValidationResultDto();
 
-
-            var result = await ValidarExistenciaPorId(criteria.Id);  //Valida que el comprobante con id exista
+            //Valida que el comprobante con id exista
+            var result = await ValidateExistence(criteria.Id);
 
             if (!string.IsNullOrEmpty(result.Validacion.Mensaje))
             {
-                validationResult.Mensajes.Add(result.Validacion);
+                validacion.Mensajes.Add(result.Validacion);
             }
 
-            return (validationResult, result.ComprobanteEntity);
+            return (validacion, result);
         }
 
+    
 
-        private async Task<ValidationConditionDto> ValidarExistencia(CreateComprobanteCriteriaDto criteria)
-        {
-            var result = new ValidationConditionDto();
+        private async Task<(ValidationConditionDto Validacion, Comprobante ComprobanteEntity)> ValidateExistence(CreateComprobanteCriteriaDto criteria)
 
-            var comprobanteEntity = await _comprobanteRepository.GetAll().FirstOrDefaultAsync(t => t.Id == criteria.Id);
-
-            if (comprobanteEntity != null)
             {
+                var validacion = new ValidationConditionDto();
 
-                result.Mensaje = "El Comprobante ya existe";
+                var comprobanteEntity = await _comprobanteRepository.GetAll().FirstOrDefaultAsync(c => c.Id == criteria.Id);
 
-                return result;
+                if (comprobanteEntity != null)
+                {
+
+                    validacion.Mensaje = "El Comprobante Existe";
+
+                    return (validacion, null);
+                }
+
+                return (validacion, comprobanteEntity);
             }
 
-            return result;
+        private async Task<(ValidationConditionDto, Comprobante ComprobanteEntity)> ValidateExistenceById(long Id)
+             { 
+                var result = new ValidationConditionDto();
+
+                var comprobanteEntity = await _comprobanteRepository.GetAll().FirstOrDefaultAsync(c => c.Id == Id);
+
+                if (comprobanteEntity == null)
+                {
+
+                    result.Mensaje = "El Comprobante No Existe";
+
+                    return (result, null);
+                }
+
+            return (result,comprobanteEntity);
         }
-
-        private async Task<(ValidationConditionDto Validacion, Comprobante ComprobanteEntity)> ValidarExistenciaPorId(long Id)
-
-        {
-            var result = new ValidationConditionDto();
-
-            var comprobanteEntity = await _comprobanteRepository.GetAll().FirstOrDefaultAsync(t => t.Id == Id);
-
-            if (comprobanteEntity == null)
-            {
-                result.Mensaje = "El Comprobante No existe";
-
-                return (result, null);
-            }
-
-            return (result, comprobanteEntity);
-        }
-
+        
     }
+} 
 
-}
+
+
+

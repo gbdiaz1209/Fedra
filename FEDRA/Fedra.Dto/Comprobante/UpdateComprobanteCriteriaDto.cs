@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fedra.Dto.Comprobante
+﻿namespace Fedra.Dto.Comprobante
 {
     public class UpdateComprobanteCriteriaDto
     {
@@ -16,7 +10,8 @@ namespace Fedra.Dto.Comprobante
         public long? DocumentoId { get; set; }
         public long? TipoConfiguracionDocumentoId { get; set; }
         public long EmpresaId { get; set; }
-        public string ModificadoPor { get; set; } = string.Empty;
+        public string CreadoPor { get; set; } = string.Empty;
+        public string ModificadoPor { get; set; } = string.Empty;        
         public DateTime? FechaModificacion { get; set; }
 
     }

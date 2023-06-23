@@ -16,7 +16,7 @@
         public DateTime? FechaModificacion { get; set; }
 
         //Propiedades de Navegacion
-        public CategoriasComprobante? CategoriasComprobantes { get; set; }
+        public CategoriasComprobanteDto? CategoriasComprobante { get; set; }
 
     }
 }

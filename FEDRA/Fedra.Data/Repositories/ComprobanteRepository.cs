@@ -12,6 +12,7 @@ namespace Fedra.Data.Repositories
         {
             _context = context;
         }
+
         //Propiedades de navegacion
         public IQueryable<Comprobante> GetAll(bool includeCategoriasComprobante)
         {
@@ -23,5 +24,8 @@ namespace Fedra.Data.Repositories
             }
             return query;
         }
-    }
+        
+     }
+        
+       
 }

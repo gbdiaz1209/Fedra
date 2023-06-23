@@ -35,15 +35,14 @@ export function MegaMenu( props ) {
   return (
     <NavDropdown 
       title={<CustomToggle />} 
-      id={id}   
-      show={show}           
+      id={id}                  
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}         
-      className='d-inline-flex align-items-center border-top'
+      className='d-inline-flex align-items-center'
       renderMenuOnMount={true}>
         <div className='container py-3'>
             <div className="dropdown-mega-menu d-flex flex-row  fade-in">
-          <div className="col-7">
+          <div className="col-lg-7 col-sm-12">
               <div className="menu-principal">
                 <Dropdown.Item className='rounded py-2'>
                    <div className=" d-flex  ">
@@ -103,7 +102,7 @@ export function MegaMenu( props ) {
               </div>              
           </div>
           
-          <div className="col-5">
+          <div className="col-lg-5 col-sm-12">
            
             <div class="d-flex py-3 px-3 titulo-otros">
               Otros          

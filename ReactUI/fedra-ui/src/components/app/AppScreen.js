@@ -1,10 +1,12 @@
 import React from 'react'
-import NavigationBar from './../layout/NavigationBar/'
+import TopNav from '../layout/TopNav'
+import NavigationBar from '../layout/NavigationBar'
 
 export const AppScreen = () => {
   return (
     <>
-       <NavigationBar/>     
+       <TopNav/>
+       {/* <NavigationBar /> */}
     </>
   )
 }

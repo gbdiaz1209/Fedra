@@ -4,6 +4,8 @@ import './NavigationBar.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 
 import { BsPeople, BsBox, BsHouse } from 'react-icons/bs';
 import { TbFileInvoice } from 'react-icons/tb';
@@ -47,13 +49,24 @@ export const NavigationBar = () => {
 
   return (
     <>  
-      <Navbar expand="sm" fixed="top" className={scrolled ? 'navbar-abajo' : ''}  bg={currentTheme}>
+      <Navbar expand="lg" fixed="top" className={scrolled ? 'navbar-abajo' : ''}  bg={currentTheme}>
         <Container fluid>
           <Navbar.Brand href="#" className="d-inline-flex justify-content-center align-items-center" >   
             <FedraIcon /> 
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className='center'>
+          
+          <Navbar.Toggle aria-controls='offcanvasNavbar-expand-lg' />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-lg`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+                  Offcanvas
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
             <Nav
              className="justify-content-center flex-grow-1 pe-5 small gap-2"
               style={{ maxHeight: '200px' }}
@@ -92,7 +105,8 @@ export const NavigationBar = () => {
                 {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
               </div>
             </div>
-          </Navbar.Collapse>
+          </Offcanvas.Body>
+            </Navbar.Offcanvas>
         </Container>
       </Navbar>
       <div style={{ paddingTop: '50px' }}></div>

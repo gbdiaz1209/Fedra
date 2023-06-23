@@ -10,9 +10,7 @@
         public long? DocumentoId { get; set; }
         public long? TipoConfiguracionDocumentoId { get; set; }
         public long EmpresaId { get; set; }
-        public string CreadoPor { get; set; } = string.Empty;
         public string ModificadoPor { get; set; } = string.Empty;        
         public DateTime? FechaModificacion { get; set; }
-
     }
 }

@@ -10,7 +10,6 @@ namespace Fedra.Business.DomainServices
 {
     public class ComprobanteDomainService : IComprobanteDomainService
     {
-
         private readonly IComprobanteRepository _comprobanteRepository;
         private readonly IComprobanteValidationService _comprobanteValidationService;
 
@@ -20,17 +19,8 @@ namespace Fedra.Business.DomainServices
             _comprobanteValidationService = comprobanteValidationService;
         }
 
-        public async Task<(ValidationResultDto Validaciones, ComprobanteDto Comprobante)> CreateComprobanteAsync(CreateComprobanteCriteriaDto criteria)
-        {
-            //servicio de validacion  / validarlo
-            var validationResult = await _comprobanteValidationService.ValidateForCreate(criteria);
-
-            if (validationResult.Mensajes.Any())
-            {
-                return (validationResult, null);
-            }
-
-            // Si es valido, usar el repositorio de comprobante para crearlo
+        public async Task<ComprobanteDto> CreateComprobanteAsync(CreateComprobanteCriteriaDto criteria)
+        {        
 
             //Mapear criteria DTO a la entidad
             var comprobanteEntity = criteria.ConvertDtoToEntity();
@@ -43,7 +33,7 @@ namespace Fedra.Business.DomainServices
             var dto = comprobanteEntity.ConvertEntityToDto();
 
             //retornar el DTO
-            return (validationResult, dto);
+            return dto;
         }
 
         public async Task<(ValidationResultDto Validaciones, ComprobanteDto Comprobante)> UpdateComprobanteAsync(UpdateComprobanteCriteriaDto criteria)
@@ -58,7 +48,6 @@ namespace Fedra.Business.DomainServices
          
             var entity = result.ComprobanteEntity;
 
-            entity.Id = criteria.Id; //estoy cambiando especificando el nombre a la entidad con criteria
             entity.Consecutivo = criteria.Consecutivo;
             entity.Descripcion = criteria.Descripcion;
             entity.Valor = criteria.Valor;
@@ -66,7 +55,6 @@ namespace Fedra.Business.DomainServices
             entity.DocumentoId = criteria.DocumentoId;
             entity.TipoConfiguracionDocumentoId = criteria.TipoConfiguracionDocumentoId;
             entity.EmpresaId = criteria.EmpresaId;
-            entity.CreadoPor = criteria.CreadoPor;
             entity.FechaModificacion = DateTime.Now;
             entity.Modificadopor = criteria.ModificadoPor; 
             entity.FechaCreacion = DateTime.Now;
@@ -81,10 +69,10 @@ namespace Fedra.Business.DomainServices
             return (new ValidationResultDto(), dto);
         }
 
-         public async Task<List<ComprobanteDto>> GetComprobanteByIdAsync(long id)
+        public async Task<List<ComprobanteDto>> GetComprobanteByIdAsync(long id)
         {
             var comprobantesBuscados = await _comprobanteRepository
-                                                           .GetAll(false, false)
+                                                           .GetAll(false)
                                                            .Where(cb => cb.Id == id)
                                                            .ToListAsync();
 

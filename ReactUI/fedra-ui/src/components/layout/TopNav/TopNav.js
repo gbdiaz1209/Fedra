@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './TopNav.css'
 
-import { BiMoon } from 'react-icons/bi';
+import { BsPeople, BsBox, BsHouse } from 'react-icons/bs';
+import { TbFileInvoice } from 'react-icons/tb';
+import { SlNotebook } from 'react-icons/sl';
+import { CgMenuGridO } from 'react-icons/cg';
+import { FaAngleDown } from 'react-icons/fa';
+import { BiMoon, BiSun } from 'react-icons/bi';
 import { BsSun } from 'react-icons/bs';
+
 import { getCurrenttheme, toggleTheme } from '../Theme/ConfigTheme';
+import FedraIcon from '../FedraIcon';
 
 
 export const TopNav = () => {
@@ -25,29 +32,15 @@ export const TopNav = () => {
 
   return (
     <>
-    <header className="header-of-page">
-  <div className="header-content">
-    <div className="left-logo">
-      <img
-        src="./../../../images/nav/logo-red-black.png"
-        alt=""
-        className="pic1"
-      />
-      <img
-        src="./../../../images/nav/logo-white-white.png"
-        alt=""
-        className="pic2"
-      />
-      <img
-        src="./../../../images/nav/logo-red-white.png"
-        alt=""
-        className="pic3"
-      />
+    <header className="header-of-page container-xxl bd-gutter flex-wrap flex-lg-nowrap">
+       <div className="header-content">
+        <div className="left-logo">
+         <FedraIcon />     
     </div>
-    <div className="header-nav">
+    <div className="header-nav ">
       <div className="nav-item">
         <span className="first-nav">
-          ALEJO
+        <BsHouse size={18}/>&nbsp;&nbsp;Dashboard
           <i className="iconfont icon_broad_back" />
         </span>
         <div className="second-menu">
@@ -139,8 +132,13 @@ export const TopNav = () => {
         </div>
       </div>
       <div className="nav-item">
+        <a href="https://www.mockplus.com/enterprise" className="first-nav">
+          <TbFileInvoice size={18} />&nbsp;&nbsp;Venta Rápida
+        </a>
+      </div>
+      <div className="nav-item">
         <span className="first-nav">
-          Mockplus Cloud
+        <CgMenuGridO size={18} />&nbsp;&nbsp;Documentos        
           <i className="iconfont icon_broad_back" />
         </span>
         <div className="second-menu">
@@ -223,88 +221,52 @@ export const TopNav = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div>     
       <div className="nav-item">
         <a href="https://www.mockplus.com/enterprise" className="first-nav">
-          Enterprise
+        <BsPeople size={18} />&nbsp;&nbsp;Terceros
         </a>
-      </div>
+      </div>  
       <div className="nav-item">
         <span className="first-nav">
-          Pricing
+            <BsBox size={18} />&nbsp;&nbsp;Productos
           <i className="iconfont icon_broad_back" />
         </span>
         <div className="second-menu" style={{ width: 252, padding: 16 }}>
           <a href="mockplus-rp.html" className="price-a">
             <img src="../images/nav/rp1.png" alt="" />
-            Mockplus RP
+            Inventario
           </a>
           <a href="mockplus-cloud.html" className="price-a">
             <img src="../images/nav/cc.png" alt="" />
-            Mockplus Cloud
+            Categorías
           </a>
         </div>
       </div>
       <div className="nav-item">
         <span className="first-nav">
-          Resouces
+           <BsPeople size={18} />&nbsp;&nbsp;Cuentas
           <i className="iconfont icon_broad_back" />
         </span>
-        <div className="second-menu" style={{ width: 538 }}>
-          <div className="left-a">
-            <a href="https://help.mockplus.com/">Help center</a>
-            <a href="https://www.mockplus.com/learn">Learn design</a>
-            <a href="https://www.mockplus.com/community">Community</a>
-            <a href="https://www.mockplus.com/blog">Blog</a>
-          </div>
-          <div className="line" style={{ left: 198 }} />
-          <div className="right-cons">
-            <div className="top-titles">
-              What's new
-              <a href="https://www.mockplus.com/newfeatures" className="more">
-                See all <i className="iconfont icon_tag_right_arrow" />
-              </a>
-            </div>
-            <a
-              href="https://www.mockplus.com/blog/post/new-multipurpose-sketch-plugin-and-more-features"
-              className="blog-a"
-            >
-              <div
-                className="pic"
-                style={{
-                  backgroundImage:
-                    'url("../../d3h2k7ug3o5pb3.cloudfront.net/image/2023-02-13/Blog%2520cover.png")'
-                }}
-              />
-              <span>New Multi-purpose Sketch Plugin and More!</span>
-            </a>
-            <a
-              href="https://www.mockplus.com/blog/post/new-ui-style-annotations-new-features-part-1"
-              className="blog-a"
-            >
-              <div
-                className="pic"
-                style={{
-                  backgroundImage:
-                    'url("../../d3h2k7ug3o5pb3.cloudfront.net/image/2022-11-22/8%25209%252010%25E6%2596%25B0%25E5%258A%259F%25E8%2583%25BD.png")'
-                }}
-              />
-              <span>New UI Style, Components, Annotations and More</span>
-            </a>
-          </div>
+        <div className="second-menu" style={{ width: 252, padding: 16 }}>
+          <a href="mockplus-rp.html" className="price-a">
+            <img src="../images/nav/rp1.png" alt="" />
+            Cuentas por cobrar
+          </a>
+          <a href="mockplus-cloud.html" className="price-a">
+            <img src="../images/nav/cc.png" alt="" />
+            Cuentas por Pagar
+          </a>
         </div>
       </div>
     </div>
-    <div className="right-login">
-    <div className="d-flex">             
-              <div onClick={handleChange}>    
-                {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
-              </div>
-            </div>
-     
+    <div className="right-login">             
+      <div onClick={handleChange} style={{paddingTop: "12px"}}>    
+        {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
+      </div>
     </div>
-    <div className="iconfont icon_menu" />
-    <div className="iconfont icon_menu_close" />
+    <div className="iconfont icon_menu icon-color" />
+    <div className="iconfont icon_menu_close icon-color" />
   </div>
 </header>
 

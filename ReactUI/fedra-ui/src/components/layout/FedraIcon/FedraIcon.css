@@ -4,7 +4,15 @@
   height: 25px;
 }
 
-
 .icon-rotate{
     transform: rotate(95deg);
+}
+
+.color-icon{
+  color: var(--bs-primary);
+}
+
+.text-icon{
+  font-size: 20px;
+  font-weight: bold;
 }

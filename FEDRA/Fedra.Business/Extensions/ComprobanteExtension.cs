@@ -11,9 +11,7 @@ namespace Fedra.Business.Extensions
             {
                 return new Comprobante();
             }
-
             var comprobanteEntity = new Comprobante
-
             {
                 Id = criteria.Id, //estoy cambiando especificando el nombre a la entidad con criteria
                 Consecutivo = criteria.Consecutivo,
@@ -36,22 +34,18 @@ namespace Fedra.Business.Extensions
             {
                 return new ComprobanteDto();
             }
-
             var comprobanteDto = new ComprobanteDto
             {
-
                 Id = entity.Id,
                 Consecutivo = entity.Consecutivo,
                 Descripcion = entity.Descripcion,
                 Valor = entity.Valor,
                 CategoriasComprobante = new CategoriasComprobanteDto 
-
                 {
                     Id = entity.CategoriasComprobante != null ? entity.CategoriasComprobante.Id : 0,
                     Descripcion = entity.Descripcion != null ? entity.CategoriasComprobante.Descripcion : string.Empty,
                     TipoConfiguracionDocumentoId = entity.CategoriasComprobante != null ? entity.CategoriasComprobante.TipoConfiguracionDocumentoId : 0,
                 },
-
                 TerceroId = entity.TerceroId,
                 DocumentoId = entity.DocumentoId,
                 TipoConfiguracionDocumentoId = entity.TipoConfiguracionDocumentoId,
@@ -60,11 +54,8 @@ namespace Fedra.Business.Extensions
                 FechaModificacion = DateTime.Now,
                 Modificadopor = entity.Modificadopor,
                 FechaCreacion = DateTime.Now,
-               
             };
-
             return comprobanteDto;
         }
     }
-
 }

@@ -20,21 +20,15 @@ namespace Fedra.Business.DomainServices
         }
         public async Task<ComprobanteDto> CreateComprobanteAsync(CreateComprobanteCriteriaDto criteria)
         {        
-            //Mapear criteria DTO a la entidad
-            var comprobanteEntity = criteria.ConvertDtoToEntity();
-            // usar el comprobante repositorio para guardar la fila en la tabla.
-            _comprobanteRepository.Add(comprobanteEntity);
+            var comprobanteEntity = criteria.ConvertDtoToEntity(); //Mapear criteria DTO a la entidad
+            _comprobanteRepository.Add(comprobanteEntity); // usar el comprobante repositorio para guardar la fila en la tabla.
             await _comprobanteRepository.SaveChangesAsync();
-            //mapear/convertir la entidad que me devuelve EF al DTO que necesito mandarle al la capa superior
-            var dto = comprobanteEntity.ConvertEntityToDto();
-            //retornar el DTO
-            return dto;
+            var dto = comprobanteEntity.ConvertEntityToDto(); //mapear/convertir la entidad que me devuelve EF al DTO que necesito mandarle al la capa superior
+            return dto;  //retornar el DTO
         }
         public async Task<(ValidationResultDto Validaciones, ComprobanteDto Comprobante)> UpdateComprobanteAsync(UpdateComprobanteCriteriaDto criteria)
         {
-            // validar el criteria - que exista
-            var result = await _comprobanteValidationService.ValidateForUpdate(criteria);
-
+            var result = await _comprobanteValidationService.ValidateForUpdate(criteria); // validar el criteria - que exista
             if (result.Validaciones.Mensajes.Any())
             {
                 return (result.Validaciones, null); 
@@ -54,11 +48,8 @@ namespace Fedra.Business.DomainServices
           
             //ya tengo la entidad
             _comprobanteRepository.Update(entity); // usar el repositorio y le paso la entidad
-
             await _comprobanteRepository.SaveChangesAsync();// guarda los cambios
-
             var dto = entity.ConvertEntityToDto(); // cambio la entidad a dto
-
             return (new ValidationResultDto(), dto);
         }
         public async Task<List<ComprobanteDto>> GetComprobanteByIdAsync(long id)
@@ -67,10 +58,8 @@ namespace Fedra.Business.DomainServices
                                                            .GetAll(false)
                                                            .Where(cb => cb.Id == id)
                                                            .ToListAsync();
-
-            //seleccionar comprobante por comprobante y convertirlo a dto
-            var comprobantesComoDto = comprobantesBuscados.Select(tb => tb.ConvertEntityToDto()).ToList();
-
+         
+            var comprobantesComoDto = comprobantesBuscados.Select(cmb => cmb.ConvertEntityToDto()).ToList();//seleccionar comprobante por comprobante y convertirlo a dto
             return comprobantesComoDto;
         }
     }

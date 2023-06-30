@@ -14,5 +14,6 @@
         public DateTime FechaCreacion { get; set; }
         public string? ModificadoPor { get; set; } 
         public DateTime? FechaModificacion { get; set; }
+        public long Id { get; set; }
     }
 }

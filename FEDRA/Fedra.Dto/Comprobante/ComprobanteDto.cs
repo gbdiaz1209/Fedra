@@ -10,10 +10,10 @@
         public long? DocumentoId { get; set; }
         public long? TipoConfiguracionDocumentoId { get; set; }
         public long EmpresaId { get; set; }
-        public string? CreadoPor { get; set; }
+        public string CreadoPor { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public string? Modificadopor { get; set; }
-        public DateTime? FechaModificacion { get; set; }
+        public string Modificadopor { get; set; }
+        public DateTime FechaModificacion { get; set; }
         //Propiedades de Navegacion
         public CategoriasComprobanteDto? CategoriasComprobante { get; set; }
     }

@@ -4,8 +4,13 @@
 }
 
 body{
-  font-family: Poppins;   
- }
+  font-family: Poppins; 
+  zoom: 90%;
+}
+
+.p-tnav{
+  padding-top: 100px;
+}
 
 [data-bs-theme=blue] {
   --bs-body-color: var(--bs-white);

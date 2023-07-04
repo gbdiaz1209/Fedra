@@ -1,39 +1,8 @@
-a{
-    text-decoration: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+  a{
+      text-decoration: none;
+      -webkit-tap-highlight-color: var(--bs-body-color);
+  }
 
-.header-lark {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
-    padding: 6px 11px;
-    border-bottom: 1px solid #dcddde;
-    z-index: 10;
-  }
-  .header-lark a {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    color: #696b6c;
-    text-align: center;
-    line-height: 24px;
-    margin: 0 1px;
-    border-radius: 6px;
-  }
-  .header-lark a i {
-    font-size: 17px;
-    cursor: pointer;
-  }
-  .header-lark a .icon_tag_refresh {
-    font-size: 16px;
-  }
-  .header-lark a:hover {
-    background-color: #e9eaeb;
-  }
   .header-of-page {
     position: fixed;
     left: 0;
@@ -41,7 +10,14 @@ a{
     right: 0;
     z-index: 11;
     transition: all 0.1s linear;
+    padding-left: 40px;
+    padding-right: 40px;    
   }
+
+  .border-navbar-dark{
+    border-bottom: solid  1px var(--bs-border-color-translucent);
+  }
+
   .header-of-page .header-content {
     /* width: 92%; */
     /* max-width: 1320px; */
@@ -426,14 +402,14 @@ a{
     color: #ffffff;
   }
   .black-header .header-content .header-nav .nav-item .first-nav .iconfont {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--bs-body-color)
   }
   @media (min-width: 1100px) {
     .black-header .header-content .header-nav .nav-item:hover .first-nav {
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--bs-body-color)
     }
     .black-header .header-content .header-nav .nav-item:hover .first-nav .iconfont {
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--bs-body-color)
     }
   }
   .black-header .header-content .right-login a {
@@ -441,20 +417,20 @@ a{
   }
   @media (min-width: 1100px) {
     .black-header .header-content .right-login a:hover {
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--bs-body-color)
     }
   }
   .black-header .header-content .right-user .iconfont {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--bs-body-color)
   }
   @media (min-width: 1100px) {
     .black-header .header-content .right-user .iconfont:hover {
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--bs-body-color)
     }
   }
   .header-of-page.header-scrolls {
-    background-color: #ffffff;
-    box-shadow: 0 4px 16px rgba(53, 48, 48, 0.04);
+    background-color: var(--bs-body-bg);
+    box-shadow: 0 4px 16px rgba(53, 48, 48, 0.04);    
   }
   .header-of-page.header-scrolls .header-content .left-logo .pic1 {
     display: block;
@@ -466,42 +442,41 @@ a{
     display: none;
   }
   .header-of-page.header-scrolls .header-content .header-nav .nav-item .first-nav {
-    color: #353030;
+    color: var(--bs-body-color);
   }
   .header-of-page.header-scrolls .header-content .header-nav .nav-item .first-nav .icon_broad_back {
-    color: rgba(53, 48, 48, 0.7);
+    color: var(--bs-body-color)
   }
   @media (min-width: 1100px) {
     .header-of-page.header-scrolls .header-content .header-nav .nav-item .first-nav:hover {
-      color: rgba(53, 48, 48, 0.7);
+      color: var(--bs-tertiary-color);
     }
     .header-of-page.header-scrolls .header-content .header-nav .nav-item .first-nav:hover .iconfont {
-      color: rgba(53, 48, 48, 0.4);
+      color: var(--bs-tertiary-color);
     }
   }
   .header-of-page.header-scrolls .header-content .right-login a {
-    color: rgba(53, 48, 48, 0.7);
+    color: var(--bs-body-color);
   }
   @media (min-width: 1100px) {
     .header-of-page.header-scrolls .header-content .right-login a:hover {
-      color: #353030;
+      color: var(--bs-body-color);
     }
   }
   .header-of-page.header-scrolls .header-content .right-login .free {
-    background-color: #fe4066;
-    color: #ffffff;
+    color: var(--bs-body-color);
   }
   @media (min-width: 1100px) {
     .header-of-page.header-scrolls .header-content .right-login .free:hover {
-      background-color: #ff5476;
-      color: #ffffff;
+      
+      color: var(--bs-body-color);
     }
   }
   .header-of-page.header-scrolls .header-content .right-user .arrow-down {
-    color: rgba(53, 48, 48, 0.7);
+    color: var(--bs-body-color);
   }
   .header-of-page.header-scrolls .header-content .icon_menu {
-    color: rgba(53, 48, 48, 0.7);
+    color: var(--bs-body-color);
   }
   .header-message-container .header-content .message {
     cursor: pointer;
@@ -774,7 +749,8 @@ a{
       width: 168px;
       line-height: 48px;
     }
-    .header-of-page.header-scrolls .header-content .icon_menu {
-      color: #353030;
-    }
+    
+    .header-of-page.header-scrolls .header-content .header-nav .nav-item .first-nav {
+      color: rgba(53, 48, 48, 0.7);
+    } 
   }

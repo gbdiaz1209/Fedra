@@ -1,4 +1,5 @@
-$(function () {       
+$( window ).on( "load", function() {
+    
     function setHeaderStatus() {
         if ($(window).scrollTop() > 0) {
             $('.header-of-page').addClass('header-scrolls');
@@ -9,15 +10,8 @@ $(function () {
     $(window).scroll(function() {
         setHeaderStatus();
     });
+    
     setHeaderStatus();
-
-    $('.header-of-page .icon_menu').click(function() {
-        $('.header-of-page').addClass('show-phone-menu');
-    });
-
-    $('.header-of-page .icon_menu_close').click(function() {
-        $('.header-of-page').removeClass('show-phone-menu');
-    });
 
     $(window).resize(function() {
         if (window.innerWidth > 1099) {

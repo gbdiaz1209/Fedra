@@ -13,6 +13,7 @@ import FedraIcon from '../FedraIcon';
 export const TopNav = () => {
   
   const [currentTheme, setCurrentTheme] = useState("");
+  const [showMenuCelular, setShowMenuCelular] = useState(false);
   
   useEffect(() => {
     if(currentTheme === ""){
@@ -32,9 +33,20 @@ export const TopNav = () => {
     window.scrollTo(0, window.scrollY*0.99);
   };
 
+  const abrirMenuCelular = () => {
+    setShowMenuCelular(true);
+  }
+
+  const cerrarMenuCelular = () => {
+    setShowMenuCelular(false);
+  }
+
   return (
     <>
-    <header className={ currentTheme=="dark" ? "header-of-page bd-gutter border-navbar-dark" :"header-of-page bd-gutter"}>
+    <header className={`header-of-page bd-gutter 
+                        ${currentTheme==="dark"  ? "border-navbar-dark" : ""} 
+                        ${showMenuCelular ? "show-phone-menu" : ""}`
+    }>
           <div className="header-content">
               <div className="left-logo">
               <FedraIcon />     
@@ -177,13 +189,13 @@ export const TopNav = () => {
           </div>
 
           <div className="right-login">             
-            <div onClick={handleChange} style={{paddingTop: "12px"}}>    
+            <div className='' onClick={handleChange} style={{paddingTop: "12px"}}>    
               {currentTheme == "dark" ? <BsSun size={19}/> : <BiMoon size={19} />}
             </div>
           </div>
           
-          <div className="iconfont icon_menu icon-color" />
-          <div className="iconfont icon_menu_close icon-color" />
+          <div className="iconfont  icon_menu icon-color" onClick={abrirMenuCelular} />
+          <div className="iconfont  icon_menu_close icon-color" onClick={cerrarMenuCelular}/>
         </div>
     </header>
 

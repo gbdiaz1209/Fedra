@@ -22,6 +22,7 @@ namespace Fedra.Data.Context
         public DbSet<Municipio> Municipios { get; set; }
         public DbSet<TipoIdentificacion> TiposIdentificacion { get; set; }
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Comprobante> Comprobantes { get; set; }
 
 
 

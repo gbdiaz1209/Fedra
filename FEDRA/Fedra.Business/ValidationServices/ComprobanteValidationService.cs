@@ -25,6 +25,19 @@ namespace Fedra.Business.ValidationServices
             }
             return (validaciones, result.ComprobanteEntity );
         }
+
+        public async Task<(ValidationResultDto Validaciones, Comprobante ComprobanteEntity)> ValidateForUpdateEstado(UpdateComprobanteEstadoCriteriaDto criteria)
+        {
+            var validaciones = new ValidationResultDto();
+            var result = await ValidateExistenceById(criteria.Id);//Valida que el comprobante con id exista
+            if (!string.IsNullOrEmpty(result.Validacion.Mensaje))
+            {
+                validaciones.Mensajes.Add(result.Validacion);
+                return (validaciones, null);
+            }
+            return (validaciones, result.ComprobanteEntity);
+        }
+
         private async Task<(ValidationConditionDto Validacion, Comprobante ComprobanteEntity)> ValidateExistenceById(long Id)
              { 
                 var validacion = new ValidationConditionDto();

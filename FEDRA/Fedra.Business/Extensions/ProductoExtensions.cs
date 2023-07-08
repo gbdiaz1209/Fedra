@@ -58,7 +58,7 @@ namespace Fedra.Business.Extensions
                     UnidadMedida = new UnidadMedidaDto
                     {
                         Id = entity.UnidadMedida != null ? entity.UnidadMedida.Id : 0,
-                        Nombre = entity.UnidadMedida != null ? entity.UnidadMedida.Nombre: string.Empty
+                        Nombre = entity.UnidadMedida != null ? entity.UnidadMedida.Nombre: string.Empty,
                         Simbolo = entity.UnidadMedida != null ? entity.UnidadMedida.Simbolo : string.Empty
                     },
 
@@ -66,7 +66,7 @@ namespace Fedra.Business.Extensions
                     {
                         Id = entity.Categoria != null ? entity.Categoria.Id : 0,
                         Estado = entity.Categoria != null ? entity.Categoria.Estado : 0,
-                        Descripcion = entity.Categoria != null ? entity.Categoria.Descripcion : string.Empty
+                        Descripcion = entity.Categoria != null ? entity.Categoria.Descripcion : string.Empty,
                         EmpresaId = entity.Categoria != null ? entity.Categoria.EmpresaId : 0,
                    
                     },

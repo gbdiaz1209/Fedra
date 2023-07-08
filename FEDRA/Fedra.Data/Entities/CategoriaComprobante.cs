@@ -1,6 +1,6 @@
 ﻿namespace Fedra.Data.Entities
 {
-    public class CategoriasComprobante
+    public class CategoriaComprobante
     {
         public long Id { get; set; }
         public string? Descripcion { get; set; }

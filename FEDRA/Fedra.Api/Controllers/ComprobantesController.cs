@@ -15,14 +15,23 @@ namespace Fedra.Api.Controllers
         {
             _comprobanteDomainService = comprobanteDomainService; //el comprobante que esta arriba recibe el del parametro
         }
+              
+        [HttpPost]
+        public async Task<ActionResult> CreateProductoAsync([FromBody] CreateComprobanteCriteriaDto criteria)
+        {
 
-       
-        /// <summary>
-        /// Buscar
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="nombre"></param>
-        /// <returns></returns>
+            if (criteria == null) //Cada petición que se le haga a los EndPoint el debe dar una Respuesta
+                                  //Las respuestas pueden ser Creado Domain, Respuestas de validación o un requerimiento invalido
+            {
+                return new BadRequestResult(); //primera validación
+            }
+            //despues de inyectar la depencia la usamos.
+            var result = await _comprobanteDomainService.CreateComprobanteAsync(criteria); //para utilizar el DomainService en
+                                                                                     // el controlador que debemos hacer?
+                                                                                     // R. inyectarlo en el arriba en el constructor)
+                                                                                     
+            return new CreatedResult(String.Empty, result); //pero si no hay mensajes, devuelveme al producto Creado
+        }
 
         /// <summary>
         /// Se utiliza put cuando es actualizar
@@ -64,6 +73,25 @@ namespace Fedra.Api.Controllers
 
             return new OkObjectResult(result.Comprobante);
         }
-  
+               
+        [HttpPut("UpdateEstado")]
+        public async Task<ActionResult> UpdateEstadoAsync([FromBody] UpdateComprobanteEstadoCriteriaDto criteria)
+        {
+
+            if (criteria == null)
+            {
+                return new BadRequestResult();
+            }
+
+            var result = await _comprobanteDomainService.UpdateComprobanteEstadoAsync(criteria);
+
+            if (result.Validaciones.Mensajes.Any())
+            {
+                return BadRequest(result.Validaciones.Mensajes);
+            }
+
+            return new OkObjectResult(result.Comprobante);
+        }
+
     }
 }

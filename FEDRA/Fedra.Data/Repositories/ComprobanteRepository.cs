@@ -19,7 +19,7 @@ namespace Fedra.Data.Repositories
 
             if (includeCategoriasComprobante)
             {
-                query = query.Include(ComprobanteEntity => ComprobanteEntity.CategoriasComprobante);
+                query = query.Include(ComprobanteEntity => ComprobanteEntity.CategoriaComprobante);
             }
             return query;
         }

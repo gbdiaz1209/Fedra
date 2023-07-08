@@ -7,5 +7,7 @@ namespace Fedra.Business.ValidationServices.Interfaces
     public interface IComprobanteValidationService
     {
         Task<(ValidationResultDto Validaciones, Comprobante ComprobanteEntity)> ValidateForUpdate(UpdateComprobanteCriteriaDto criteria);
+
+        Task<(ValidationResultDto Validaciones, Comprobante ComprobanteEntity)> ValidateForUpdateEstado(UpdateComprobanteEstadoCriteriaDto criteria);
     }
 }

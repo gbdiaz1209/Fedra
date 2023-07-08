@@ -40,6 +40,9 @@ namespace Fedra.Business.DomainServices
             entity.Valor = criteria.Valor;
             entity.TerceroId = criteria.TerceroId;
             entity.DocumentoId = criteria.DocumentoId;
+            entity.FormaPagoId = criteria.FormaPagoId;
+            entity.CategoriaComprobanteId = criteria.CategoriasComprobanteId;
+            entity.ReferenciaPago = criteria.ReferenciaPago;
             entity.TipoConfiguracionDocumentoId = criteria.TipoConfiguracionDocumentoId;
             entity.EmpresaId = criteria.EmpresaId;
             entity.FechaModificacion = DateTime.Now;
@@ -52,6 +55,27 @@ namespace Fedra.Business.DomainServices
             var dto = entity.ConvertEntityToDto(); // cambio la entidad a dto
             return (new ValidationResultDto(), dto);
         }
+        public async Task<(ValidationResultDto Validaciones, ComprobanteDto Comprobante)> UpdateComprobanteEstadoAsync(UpdateComprobanteEstadoCriteriaDto criteria)
+        {
+            var result = await _comprobanteValidationService.ValidateForUpdateEstado(criteria); // validar el criteria - que exista
+            if (result.Validaciones.Mensajes.Any())
+            {
+                return (result.Validaciones, null);
+            }
+            var entity = result.ComprobanteEntity;
+
+            entity.Estado = criteria.Estado;           
+            entity.FechaModificacion = DateTime.Now;
+            entity.Modificadopor = criteria.ModificadoPor;
+
+            //ya tengo la entidad
+            _comprobanteRepository.Update(entity); // usar el repositorio y le paso la entidad
+            await _comprobanteRepository.SaveChangesAsync();// guarda los cambios
+            var dto = entity.ConvertEntityToDto(); // cambio la entidad a dto
+            return (new ValidationResultDto(), dto);
+        }
+
+
         public async Task<List<ComprobanteDto>> GetComprobanteByIdAsync(long id)
         {
             var comprobantesBuscados = await _comprobanteRepository

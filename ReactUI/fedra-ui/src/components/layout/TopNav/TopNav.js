@@ -30,15 +30,20 @@ export const TopNav = () => {
 
     setCurrentTheme(currentTheme);      
     
-    window.scrollTo(0, window.scrollY*0.99);
+    ajustarScrollEvitarTopNavTransparente();
   };
 
   const abrirMenuCelular = () => {
-    setShowMenuCelular(true);
+    setShowMenuCelular(true);    
   }
 
   const cerrarMenuCelular = () => {
-    setShowMenuCelular(false);
+    ajustarScrollEvitarTopNavTransparente();
+    setShowMenuCelular(false);    
+  }
+
+  const ajustarScrollEvitarTopNavTransparente = () => {
+    window.scrollTo(0, window.scrollY*0.99);
   }
 
   return (
@@ -89,13 +94,13 @@ export const TopNav = () => {
                   </a>
                   <a
                     href="#"
-                    style={{ backgroundImage: 'url("../images/nav/edit.png")' }}
+                    style={{ backgroundImage: 'url("../images/nav/ce.avif")' }}
                   >
                     <span>Comprobante de Egreso</span>
                     <p>Controla los gastos del negocio</p>
                   </a>
                   <a
-                    style={{ backgroundImage: 'url("../images/nav/recibo-caja.png")' }}
+                    style={{ backgroundImage: 'url("../images/nav/rcaja.png")' }}
                     id="head-nav-download-rp"
                   >
                     <span>Recibo d Caja</span>

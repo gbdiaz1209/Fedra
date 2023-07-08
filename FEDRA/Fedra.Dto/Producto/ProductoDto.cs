@@ -27,8 +27,9 @@
         /// <summary>
         /// Propiedades de navegacion
         /// </summary>
-        public CategoriaDto Categoria { get; set; }
-        public UnidadMedidaDto UnidadMedida { get; set; }
+        public CategoriaDto? Categoria { get; set; }
+        public UnidadMedidaDto? UnidadMedida { get; set; }
+
 
     }
 }

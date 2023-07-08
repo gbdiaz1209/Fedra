@@ -33,8 +33,8 @@ namespace Fedra.Business.ValidationServices
             return result;
         }
 
-        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdate
-                                                                                    (UpdateTerceroCriteriaDto criteria)
+        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdate(UpdateTerceroCriteriaDto criteria)
+
         {
             var validationResult = new ValidationResultDto();
 
@@ -49,8 +49,8 @@ namespace Fedra.Business.ValidationServices
             return (validationResult, result.TerceroEntity); 
         }
 
-        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)>
-            ValidateForUpdateEstado(UpdateEstadoCriteriaDto criteria)
+        public async Task<(ValidationResultDto Validaciones, Tercero TerceroEntity)> ValidateForUpdateEstado(UpdateEstadoCriteriaDto criteria)
+
         {
             var validationResult = new ValidationResultDto();
 
@@ -82,8 +82,8 @@ namespace Fedra.Business.ValidationServices
             return result;
         }
 
-        private async Task<(ValidationConditionDto Validacion , Tercero TerceroEntity)> ValidarExistenciaPorId
-                                                                                                (long TerceroId)
+        private async Task<(ValidationConditionDto Validacion , Tercero TerceroEntity)> ValidarExistenciaPorId(long TerceroId)
+
         {
             var result = new ValidationConditionDto();
 

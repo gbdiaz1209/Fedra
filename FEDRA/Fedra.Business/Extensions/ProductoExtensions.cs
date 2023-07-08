@@ -59,7 +59,7 @@ namespace Fedra.Business.Extensions
                     {
                         Id = entity.UnidadMedida != null ? entity.UnidadMedida.Id : 0,
                         Nombre = entity.UnidadMedida != null ? entity.UnidadMedida.Nombre: string.Empty,
-                        Simbolo = entity.UnidadMedida != null ? entity.UnidadMedida.Simbolo : string.Empty,
+                        Simbolo = entity.UnidadMedida != null ? entity.UnidadMedida.Simbolo : string.Empty
                     },
 
                     Categoria = new CategoriaDto
@@ -80,7 +80,7 @@ namespace Fedra.Business.Extensions
                     Estado = (int)EstadoActivacion.Activo,
                     ModificadoPor = entity.ModificadoPor,
                     CreadoPor = entity.CreadoPor,
-                    FechaCreacion = DateTime.Now,//Preguntar si para actualizar es necesario este campo//
+                    FechaCreacion = DateTime.Now,
                     FechaModificacion = DateTime.Now
                 };
 
